@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" rx="20" fill="#F8FAFC" />
+  <rect x="30" y="60" width="140" height="60" rx="8" fill="#E6EEF8" />
+  <rect x="40" y="80" width="120" height="10" rx="4" fill="#CBD5E1" />
+  <text x="40" y="180" font-family="Arial" font-size="14" fill="#0F172A">HP Victus 15</text>
+</svg>

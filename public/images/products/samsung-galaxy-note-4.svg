@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" rx="20" fill="#F1F5F9" />
+  <rect x="60" y="30" width="80" height="120" rx="10" fill="#E2E8F0" />
+  <rect x="80" y="40" width="40" height="16" rx="4" fill="#94A3B8" />
+  <text x="30" y="180" font-family="Arial" font-size="14" fill="#0F172A">Samsung Galaxy Note 4</text>
+</svg>

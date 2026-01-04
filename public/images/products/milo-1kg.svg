@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <rect width="200" height="200" rx="20" fill="#FFF7ED" />
+  <ellipse cx="100" cy="90" rx="48" ry="58" fill="#FEE2E2" />
+  <text x="40" y="180" font-family="Arial" font-size="14" fill="#7F1D1D">Milo 1KG</text>
+</svg>
