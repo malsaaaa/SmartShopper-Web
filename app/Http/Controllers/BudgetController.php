@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Budget;
+use App\Models\BudgetHistory;
 use App\Models\Product;
 use App\Models\Retailer;
 use App\Models\ShoppingItem;
+use App\Models\ShoppingListShare;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Str;
 
 class BudgetController extends Controller
 {
@@ -75,7 +79,12 @@ class BudgetController extends Controller
 
         $percentSpent = $budget->limit_amount > 0 ? min(100, ($budget->current_spending / $budget->limit_amount) * 100) : 0;
 
-        return view('budget-list', compact('budget', 'items', 'categoryChartUrl', 'percentSpent', 'labels', 'data', 'colors'));
+        // Get new features data
+        $shoppingTips = $this->getShoppingTips();
+        $budgetHistory = $this->getBudgetHistory();
+        $sharedWith = ShoppingListShare::where('user_id', Auth::id())->with('sharedWithUser')->get();
+
+        return view('budget-list', compact('budget', 'items', 'categoryChartUrl', 'percentSpent', 'labels', 'data', 'colors', 'shoppingTips', 'budgetHistory', 'sharedWith'));
     }
 
     public function show($id) {
@@ -108,9 +117,21 @@ class BudgetController extends Controller
 
     public function search(Request $request) {
         $query = $request->input('query');
-        $products = Product::with('prices')->where('name', 'LIKE', "%{$query}%")->get();
+        $category = $request->input('category');
+        
+        $productsQuery = Product::with('prices')->where('name', 'LIKE', "%{$query}%");
+        
+        if ($category) {
+            $productsQuery->where('category', $category);
+        }
+        
+        $products = $productsQuery->get();
+        
+        // Get all available categories for filter
+        $allCategories = Product::select('category')->distinct()->orderBy('category')->pluck('category');
         $budget = $this->getBudget();
-        return view('search', compact('products', 'budget', 'query'));
+        
+        return view('search', compact('products', 'budget', 'query', 'category', 'allCategories'));
     }
 
     public function check(Request $request) {
@@ -195,6 +216,110 @@ class BudgetController extends Controller
         $request->validate(['limit' => 'required|numeric|min:1']);
         Budget::where('user_id', Auth::id())->update(['limit_amount' => $request->limit]);
         return back();
+    }
+
+    public function updateItemNote(Request $request, $id) {
+        $request->validate(['notes' => 'nullable|string|max:500']);
+        ShoppingItem::where('user_id', Auth::id())->where('id', $id)->update(['notes' => $request->notes]);
+        return back()->with('success', 'Note updated!');
+    }
+
+    public function getBudgetHistory() {
+        $history = \App\Models\BudgetHistory::where('user_id', Auth::id())
+            ->orderBy('recorded_at', 'desc')
+            ->limit(30)
+            ->get();
+        
+        return $history;
+    }
+
+    public function getShoppingTips() {
+        $items = ShoppingItem::where('user_id', Auth::id())->get();
+        $tips = [];
+
+        if ($items->count() > 0) {
+            $totalSpent = (float) $items->sum(fn($item) => $item->price * $item->quantity);
+            $avgPrice = $totalSpent / $items->count();
+
+            // Tip 1: High-quantity items
+            $highQtyItems = $items->where('quantity', '>', 2);
+            if ($highQtyItems->count() > 0) {
+                $tips[] = [
+                    'icon' => '📦',
+                    'title' => 'Bulk Buying',
+                    'message' => "You're buying {$highQtyItems->count()} items in bulk. Consider checking for bulk discounts!"
+                ];
+            }
+
+            // Tip 2: Single item check
+            if ($items->count() === 1) {
+                $tips[] = [
+                    'icon' => '🛒',
+                    'title' => 'Add More Items',
+                    'message' => 'You only have 1 item. Add more to compare prices across retailers!'
+                ];
+            }
+
+            // Tip 3: Spending alert
+            $budget = $this->getBudget();
+            if ($budget->current_spending > $budget->limit_amount * 0.5) {
+                $tips[] = [
+                    'icon' => '💰',
+                    'title' => 'Budget Usage',
+                    'message' => 'You\'ve used over 50% of your budget. Review your shopping list to stay on track.'
+                ];
+            }
+
+            // Tip 4: Variety tip
+            $categories = Product::whereIn('name', $items->pluck('name')->toArray())
+                ->select('category')
+                ->distinct()
+                ->count();
+            
+            if ($categories <= 1) {
+                $tips[] = [
+                    'icon' => '🥗',
+                    'title' => 'Diversify',
+                    'message' => 'Consider shopping across different categories for a balanced budget.'
+                ];
+            }
+        }
+
+        return $tips;
+    }
+
+    public function shareList(Request $request) {
+        $request->validate(['email' => 'required|email|exists:users,email']);
+        
+        $sharedUser = \App\Models\User::where('email', $request->email)->first();
+        
+        if ($sharedUser->id === Auth::id()) {
+            return back()->with('error', 'Cannot share with yourself!');
+        }
+
+        \App\Models\ShoppingListShare::firstOrCreate([
+            'user_id' => Auth::id(),
+            'shared_with_user_id' => $sharedUser->id,
+        ], [
+            'share_token' => \Illuminate\Support\Str::random(32),
+            'can_edit' => false,
+        ]);
+
+        return back()->with('success', 'Shopping list shared with ' . $sharedUser->name . '!');
+    }
+
+    public function toggleWishlist(Request $request, $id) {
+        $item = ShoppingItem::where('user_id', Auth::id())->where('id', $id)->first();
+        if ($item) {
+            $item->update(['is_wishlist' => !$item->is_wishlist]);
+        }
+        return back()->with('success', 'Item updated!');
+    }
+
+    public function addItemImage(Request $request, $id) {
+        $request->validate(['image_url' => 'required|url']);
+        ShoppingItem::where('user_id', Auth::id())->where('id', $id)->update(['image_url' => $request->image_url]);
+        return back()->with('success', 'Image added!');
     }
 
     private function syncTotal() {

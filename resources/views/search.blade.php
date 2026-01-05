@@ -13,7 +13,45 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- Filters Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-sm p-6 sticky top-32">
+                        <h3 class="font-black text-gray-900 text-lg mb-6">Filters</h3>
+                        
+                        <form action="{{ route('products.search') }}" method="GET" class="space-y-6">
+                            <!-- Search Query (Hidden) -->
+                            <input type="hidden" name="query" value="{{ $query }}">
+                            
+                            <!-- Category Filter -->
+                            <div>
+                                <label class="block text-xs font-black uppercase text-gray-600 mb-3">Category</label>
+                                <select name="category" class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm font-semibold text-gray-700 focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+                                    <option value="">All Categories</option>
+                                    @foreach($allCategories as $cat)
+                                        <option value="{{ $cat }}" @if($category === $cat) selected @endif>{{ $cat }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            
+                            <!-- Apply Filters Button -->
+                            <button type="submit" class="w-full bg-emerald-600 text-white font-black py-3 rounded-2xl hover:bg-emerald-700 transition-all shadow-md">
+                                Apply Filters
+                            </button>
+                            
+                            <!-- Clear Filters Button -->
+                            @if($category)
+                                <a href="{{ route('products.search', ['query' => $query]) }}" class="w-full block text-center bg-gray-200 text-gray-700 font-black py-3 rounded-2xl hover:bg-gray-300 transition-all">
+                                    Clear Filters
+                                </a>
+                            @endif
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Products Grid -->
+                <div class="lg:col-span-3">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 @forelse($products as $product)
                     @php $bestPrice = $product->prices->sortBy('amount')->first(); @endphp
                     <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all p-6 flex flex-col justify-between">
@@ -36,9 +74,11 @@
                     </div>
                 @empty
                     <div class="col-span-full py-32 text-center bg-white rounded-[3rem] border-2 border-dashed border-gray-100">
-                        <p class="text-gray-300 font-bold text-xl px-12">No products found for "{{ $query }}".</p>
+                        <p class="text-gray-300 font-bold text-xl px-12">No products found for "{{ $query }}"@if($category) in category {{ $category }}@endif</p>
                     </div>
                 @endforelse
+                    </div>
+                </div>
             </div>
         </div>
     </div>

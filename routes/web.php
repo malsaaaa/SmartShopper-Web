@@ -53,6 +53,22 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Updates the monthly RM spending limit
     Route::post('/update-limit', [BudgetController::class, 'updateLimit'])->name('budget.limit');
 
+    // --- Item Notes ---
+    // Update item notes
+    Route::post('/item/{id}/note', [BudgetController::class, 'updateItemNote'])->name('item.note');
+
+    // --- Wishlist Feature ---
+    // Toggle item wishlist status
+    Route::post('/item/{id}/wishlist', [BudgetController::class, 'toggleWishlist'])->name('budget.wishlist');
+
+    // --- Item Images ---
+    // Add image to item
+    Route::post('/item/{id}/image', [BudgetController::class, 'addItemImage'])->name('budget.image');
+
+    // --- List Sharing ---
+    // Share shopping list with another user
+    Route::post('/share-list', [BudgetController::class, 'shareList'])->name('budget.share');
+
     // --- Profile Management (Default Laravel Breeze) ---
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

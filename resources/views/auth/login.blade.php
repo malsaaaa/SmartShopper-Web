@@ -1,101 +1,82 @@
 <x-guest-layout>
-    <div class="flex min-h-screen w-full overflow-hidden">
-        
-        <div id="auth-left" class="hidden lg:flex lg:w-1/2 bg-emerald-600 items-center justify-center p-12 relative">
-            <img src="/images/auth/overlay.svg" alt="" class="absolute inset-0 w-full h-full object-cover z-0 opacity-10 pointer-events-none" />
+    <div class="min-h-screen flex items-center justify-center bg-cover bg-center relative" style="background-image: url('https://static.vecteezy.com/system/resources/thumbnails/069/714/603/small/fresh-market-wooden-table-display-2023-photo.jpg');">
+        <!-- Dark overlay -->
+        <div class="absolute inset-0 bg-black/40"></div>
 
-            <!-- Interactive decorative eyes (accessible: aria-hidden, presentation) -->
-            <svg class="auth-eyes absolute z-5 w-44 h-24 left-1/2 top-1/3 transform -translate-x-1/2 pointer-events-none" viewBox="0 0 200 80" aria-hidden="true" role="presentation">
-              <g class="eye" transform="translate(40,40)">
-                <circle cx="0" cy="0" r="26" fill="#fff" />
-                <circle class="pupil" cx="0" cy="0" r="8" fill="#0f172a" />
-              </g>
-              <g class="eye" transform="translate(120,40)">
-                <circle cx="0" cy="0" r="26" fill="#fff" />
-                <circle class="pupil" cx="0" cy="0" r="8" fill="#0f172a" />
-              </g>
-            </svg>
-
-            <style>
-                /* small, local styles for the eye effect */
-                .auth-eyes { opacity: 0.12; }
-                .auth-eyes .pupil {
-                    transition: transform 120ms linear;
-                    transform: translate(0,0);
-                    transform-origin: center;
-                    transform-box: fill-box; /* ensures transform origin applies to SVG shapes */
-                    -webkit-transform-box: fill-box;
-                    will-change: transform;
-                }
-                @media (prefers-reduced-motion: reduce) { .auth-eyes .pupil { transition: none; } }
-            </style>
-
-            <div class="relative z-10 text-center text-white">
-                <div class="flex justify-center mb-6">
-                    <div style="width: 80px; height: 80px;" class="bg-white/10 backdrop-blur rounded-3xl flex items-center justify-center border border-white/20 shadow-xl">
-                        <svg style="width: 40px; height: 40px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                        </svg>
-                    </div>
-                </div>
-                <h1 class="text-5xl font-black tracking-tighter mb-2">SmartShopper</h1>
-                <p class="text-emerald-100 font-bold uppercase tracking-[0.3em] text-xs">Personal Finance Assistant</p>
-            </div>
-        </div>
-
-        <div class="w-full lg:w-1/2 flex items-center justify-center bg-white p-8 sm:p-12 lg:p-24">
-            <div class="w-full max-w-md">
-                
-                <div class="lg:hidden text-center mb-10">
-                    <div class="flex justify-center mb-4">
-                        <div style="width: 50px; height: 50px;" class="bg-emerald-500 text-white rounded-2xl flex items-center justify-center">
-                            <svg style="width: 28px; height: 28px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+        <!-- Login Card -->
+        <div class="relative z-10 w-full max-w-md mx-4">
+            <div class="bg-white rounded-lg shadow-2xl overflow-hidden">
+                <!-- Logo and Name -->
+                <div class="px-8 pt-8 pb-4 text-center">
+                    <div class="flex justify-center mb-3">
+                        <div class="w-12 h-12 bg-emerald-600 rounded-2xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
                         </div>
                     </div>
-                    <h2 class="text-2xl font-black text-gray-900 tracking-tighter">SmartShopper</h2>
+                    <h2 class="text-xl font-black text-gray-900 tracking-tight">SmartShopper</h2>
                 </div>
 
-                <div class="mb-10">
-                    <h2 class="text-3xl font-black text-gray-900 tracking-tight">Welcome Back</h2>
-                    <p class="text-sm font-bold text-gray-400 mt-2">Sign in to your utility account.</p>
+                <!-- Header -->
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-500 px-8 py-8 text-center">
+                    <h1 class="text-xl font-black text-white tracking-widest uppercase">Login</h1>
+                    <p class="text-emerald-100 text-xs font-bold mt-2 tracking-[0.2em]">Welcome Back</p>
                 </div>
 
-                <form method="POST" action="{{ route('login') }}" class="space-y-6">
+                <!-- Form -->
+                <form method="POST" action="{{ route('login') }}" class="px-8 py-8 space-y-5">
                     @csrf
 
+                    <!-- Email -->
                     <div>
-                        <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Account Email</label>
                         <div class="relative group">
-                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-emerald-500">
-                                <div style="width: 20px; height: 20px;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path></svg></div>
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-emerald-600">
+                                <svg style="width:18px; height:18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path></svg>
                             </div>
-                            <input type="email" name="email" required class="block w-full pl-12 pr-4 py-4 bg-gray-50 border-none rounded-2xl text-sm font-bold text-gray-900 focus:ring-2 focus:ring-emerald-500" placeholder="name@email.com">
+                            <input type="email" name="email" :value="old('email')" required autofocus placeholder="Email Address" 
+                                   class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm font-semibold text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all">
                         </div>
+                        <x-input-error :messages="$errors->get('email')" class="mt-1 text-xs text-red-600" />
                     </div>
 
+                    <!-- Password -->
                     <div>
-                        <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2">Security Key</label>
                         <div class="relative group">
-                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-emerald-500">
-                                <div style="width: 20px; height: 20px;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg></div>
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-emerald-600">
+                                <svg style="width:18px; height:18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                             </div>
-                            <input type="password" name="password" required class="block w-full pl-12 pr-4 py-4 bg-gray-50 border-none rounded-2xl text-sm font-bold text-gray-900 focus:ring-2 focus:ring-emerald-500" placeholder="••••••••">
+                            <input type="password" name="password" required placeholder="Password" 
+                                   class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm font-semibold text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent transition-all">
                         </div>
+                        <x-input-error :messages="$errors->get('password')" class="mt-1 text-xs text-red-600" />
                     </div>
 
-                    <button type="submit" class="w-full bg-emerald-600 text-white font-black py-4 rounded-2xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-100 active:scale-95">
-                        Access Dashboard
+                    <!-- Remember Me -->
+                    <div class="flex items-center">
+                        <input type="checkbox" name="remember" id="remember" class="w-4 h-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer">
+                        <label for="remember" class="ml-2 text-sm font-bold text-gray-700 cursor-pointer">Keep Me Logged In</label>
+                    </div>
+
+                    <!-- Login Button -->
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-3 rounded-lg transition-all uppercase tracking-widest text-sm shadow-lg hover:shadow-xl active:scale-95">
+                        Log In
                     </button>
 
-                    <div class="pt-6 text-center">
-                        <p class="text-sm font-bold text-gray-400">
-                            New here? <a href="{{ route('register') }}" class="text-emerald-600 ml-1">Create Account</a>
-                        </p>
+                    <!-- Links -->
+                    <div class="flex justify-between items-center pt-4 border-t border-gray-200">
+                        <a href="{{ route('password.request') }}" class="text-xs font-bold text-gray-600 hover:text-emerald-600 transition-colors uppercase tracking-wide">
+                            Forgot Password?
+                        </a>
+                        <a href="{{ route('register') }}" class="text-xs font-bold text-gray-600 hover:text-emerald-600 transition-colors uppercase tracking-wide">
+                            New User? Register
+                        </a>
                     </div>
                 </form>
+
+                <!-- Footer -->
+                <div class="bg-gray-50 px-8 py-4 text-center border-t border-gray-200">
+                    <p class="text-[10px] text-gray-500 font-semibold">© 2026 SmartShopper. All rights reserved.</p>
+                </div>
             </div>
         </div>
     </div>
-
-    <script src="/js/auth-eyes.js" defer></script>
 </x-guest-layout>
