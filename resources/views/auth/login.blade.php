@@ -26,6 +26,34 @@
                 <form method="POST" action="{{ route('login') }}" class="px-8 py-8 space-y-5">
                     @csrf
 
+                    <!-- Login Type Selection -->
+                    <div class="bg-gray-50 p-4 rounded-lg border {{ $errors->has('redirect_to') ? 'border-red-500' : 'border-gray-200' }}">
+                        <p class="text-xs font-bold text-gray-700 uppercase tracking-wide mb-3">Login As</p>
+                        <div class="flex gap-4">
+                            <!-- User Option -->
+                            <label class="flex items-center gap-2 cursor-pointer flex-1">
+                                <input type="radio" name="login_role" value="user" checked class="w-4 h-4 text-emerald-600 border-gray-300 focus:ring-emerald-500" onchange="document.getElementById('redirect_to').value = 'user'">
+                                <span class="flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                    <span class="text-sm font-bold text-gray-700">User</span>
+                                </span>
+                            </label>
+                            
+                            <!-- Admin Option -->
+                            <label class="flex items-center gap-2 cursor-pointer flex-1">
+                                <input type="radio" name="login_role" value="admin" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500" onchange="document.getElementById('redirect_to').value = 'admin'">
+                                <span class="flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                    <span class="text-sm font-bold text-gray-700">Admin</span>
+                                </span>
+                            </label>
+                        </div>
+                        <x-input-error :messages="$errors->get('redirect_to')" class="mt-2 text-xs text-red-600" />
+                    </div>
+                    
+                    <!-- Hidden redirect input -->
+                    <input type="hidden" id="redirect_to" name="redirect_to" value="user">
+
                     <!-- Email -->
                     <div>
                         <div class="relative group">
@@ -71,6 +99,7 @@
                         </a>
                     </div>
                 </form>
+                </div>
 
                 <!-- Footer -->
                 <div class="bg-gray-50 px-8 py-4 text-center border-t border-gray-200">

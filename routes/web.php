@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BudgetController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\PriceReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +19,9 @@ Route::get('/', [BudgetController::class, 'index']);
 // Users can browse products and search without being logged in
 Route::get('/dashboard', [BudgetController::class, 'index'])->name('dashboard');
 Route::get('/search', [BudgetController::class, 'search'])->name('products.search');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
 // Route to view specific product details
 Route::get('/product/{id}', [BudgetController::class, 'show'])->name('product.show');
@@ -25,7 +30,7 @@ Route::get('/product/{id}', [BudgetController::class, 'show'])->name('product.sh
 Route::post('/product/{id}/alert', [BudgetController::class, 'toggleAlert'])->name('product.alert');
 
 // Route to report incorrect price (any user can report)
-Route::post('/product/{id}/report-price', [\App\Http\Controllers\PriceReportController::class, 'store'])->name('product.report');
+Route::post('/product/{id}/report-price', [PriceReportController::class, 'store'])->name('product.report');
 
 // 3. Authenticated SmartShopper Routes
 // These routes require the user to be logged in to manage their personal budget
@@ -34,6 +39,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // --- Navigation & View Routes ---
     // Displays the main Budget Planning and Active Shopping List page
     Route::get('/budget-plan', [BudgetController::class, 'showBudget'])->name('budget.index');
+
+    // Chat with AI assistant
+    Route::get('/chat', function () {
+        return view('chat');
+    })->name('chat');
 
     // --- Shopping List Actions (Must use POST) ---
     
@@ -69,11 +79,60 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Share shopping list with another user
     Route::post('/share-list', [BudgetController::class, 'shareList'])->name('budget.share');
 
+    // --- Chat API Routes ---
+    Route::post('/api/chat/get-or-create', [ChatController::class, 'getOrCreateChat']);
+    Route::post('/api/chat/send', [ChatController::class, 'sendMessage']);
+    Route::get('/api/chat/{chatId}/messages', [ChatController::class, 'getMessages']);
+    Route::post('/api/chat/create', [ChatController::class, 'createChat']);
+    Route::delete('/api/chat/{chatId}', [ChatController::class, 'deleteChat']);
+
     // --- Profile Management (Default Laravel Breeze) ---
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    // User profile view
+    Route::get('/my-profile', [BudgetController::class, 'showProfile'])->name('profile');
 });
 
-// 4. Include Authentication Routes (Login, Register, Logout)
+// 4. Admin Routes (Protected by IsAdmin middleware)
+Route::middleware(['auth', 'verified', 'is_admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [\App\Http\Controllers\AdminDashboardController::class, 'index'])->name('dashboard');
+    
+    // Products Management
+    Route::get('/products', [\App\Http\Controllers\AdminDashboardController::class, 'products'])->name('products');
+    Route::get('/products/create', [\App\Http\Controllers\AdminDashboardController::class, 'createProduct'])->name('products.create');
+    Route::post('/products', [\App\Http\Controllers\AdminDashboardController::class, 'storeProduct'])->name('products.store');
+    Route::get('/products/{product}/edit', [\App\Http\Controllers\AdminDashboardController::class, 'editProduct'])->name('products.edit');
+    Route::patch('/products/{product}', [\App\Http\Controllers\AdminDashboardController::class, 'updateProduct'])->name('products.update');
+    Route::delete('/products/{product}', [\App\Http\Controllers\AdminDashboardController::class, 'deleteProduct'])->name('products.delete');
+    
+    // Retailers Management
+    Route::get('/retailers', [\App\Http\Controllers\AdminDashboardController::class, 'retailers'])->name('retailers');
+    Route::get('/retailers/create', [\App\Http\Controllers\AdminDashboardController::class, 'createRetailer'])->name('retailers.create');
+    Route::post('/retailers', [\App\Http\Controllers\AdminDashboardController::class, 'storeRetailer'])->name('retailers.store');
+    Route::get('/retailers/{retailer}/edit', [\App\Http\Controllers\AdminDashboardController::class, 'editRetailer'])->name('retailers.edit');
+    Route::patch('/retailers/{retailer}', [\App\Http\Controllers\AdminDashboardController::class, 'updateRetailer'])->name('retailers.update');
+    
+    // Prices Management
+    Route::get('/prices', [\App\Http\Controllers\AdminDashboardController::class, 'prices'])->name('prices');
+    Route::patch('/prices/{price}', [\App\Http\Controllers\AdminDashboardController::class, 'updatePrice'])->name('prices.update');
+    Route::delete('/prices/{price}', [\App\Http\Controllers\AdminDashboardController::class, 'deletePrice'])->name('prices.delete');
+    
+    // Users Management
+    Route::get('/users', [\App\Http\Controllers\AdminDashboardController::class, 'users'])->name('users');
+    Route::patch('/users/{user}/toggle-admin', [\App\Http\Controllers\AdminDashboardController::class, 'toggleAdmin'])->name('users.toggleAdmin');
+    
+    // Price Reports
+    Route::get('/reports', [\App\Http\Controllers\AdminDashboardController::class, 'reports'])->name('reports');
+    Route::patch('/reports/{report}', [\App\Http\Controllers\AdminDashboardController::class, 'updateReportStatus'])->name('reports.update');
+    
+    // Scraper Management
+    Route::post('/scraper/run', [\App\Http\Controllers\AdminDashboardController::class, 'runScraper'])->name('scraper.run');
+    Route::get('/scraper/settings', [\App\Http\Controllers\AdminDashboardController::class, 'scraperSettings'])->name('scraper.settings');
+    Route::patch('/scraper/settings', [\App\Http\Controllers\AdminDashboardController::class, 'updateScraperSettings'])->name('scraper.settings.update');
+    Route::post('/scraper/logs/clear', [\App\Http\Controllers\AdminDashboardController::class, 'clearScraperLogs'])->name('scraper.logs.clear');
+});
+
+// 5. Include Authentication Routes (Login, Register, Logout)
 require __DIR__.'/auth.php';

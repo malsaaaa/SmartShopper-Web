@@ -29,6 +29,7 @@ class LoginRequest extends FormRequest
         return [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
+            'redirect_to' => ['nullable', 'string', 'in:user,admin'],
         ];
     }
 
@@ -46,6 +47,30 @@ class LoginRequest extends FormRequest
 
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
+            ]);
+        }
+
+        // Validate role selection matches user's actual role
+        $user = Auth::user();
+        $requestedRole = $this->input('redirect_to', 'user');
+        
+        // If admin user selects "user" role, prompt them to select admin role
+        if ($user->is_admin && $requestedRole === 'user') {
+            Auth::logout();
+            RateLimiter::hit($this->throttleKey());
+            
+            throw ValidationException::withMessages([
+                'redirect_to' => 'Please select as Admin Role to access the admin dashboard.',
+            ]);
+        }
+        
+        // If non-admin user selects "admin" role, reject
+        if (!$user->is_admin && $requestedRole === 'admin') {
+            Auth::logout();
+            RateLimiter::hit($this->throttleKey());
+            
+            throw ValidationException::withMessages([
+                'redirect_to' => 'This account does not have admin privileges. Please select "User" to login as a regular user.',
             ]);
         }
 

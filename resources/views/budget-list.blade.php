@@ -1,16 +1,18 @@
-<x-app-layout>
-    <div class="bg-gray-50 min-h-screen pb-12" x-data="{ openModal: false, showClearConfirm: false, shareModal: false, editNotes: null, sortBy: 'name', filterWishlist: false, printMode: false }">
+@extends('layouts.app')
+
+@section('content')
+    <div class="bg-gray-50 dark:bg-gray-900 min-h-screen pb-12" x-data="{ openModal: false, showClearConfirm: false, shareModal: false, editNotes: null, sortBy: 'name', filterWishlist: false, printMode: false }">
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex justify-between items-center flex-wrap gap-4">
-            <h1 class="text-3xl font-black text-gray-900 tracking-tighter">Budget Planning</h1>
+            <h1 class="text-3xl font-black text-gray-900 dark:text-white tracking-tighter">Budget Planning</h1>
             <div class="flex gap-4 flex-wrap">
-                <button @click="printMode = true; window.print();" class="p-2 bg-white rounded-xl shadow-sm border border-gray-100 text-gray-400 hover:text-purple-500 transition-colors" title="Print list">
+                <button @click="printMode = true; window.print();" class="p-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-gray-400 dark:text-gray-500 hover:text-purple-500 dark:hover:text-purple-400 transition-colors" title="Print list">
                     <div style="width:20px; height:20px;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg></div>
                 </button>
-                <button @click="shareModal = true" class="p-2 bg-white rounded-xl shadow-sm border border-gray-100 text-gray-400 hover:text-blue-500 transition-colors" title="Share list">
+                <button @click="shareModal = true" class="p-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-gray-400 dark:text-gray-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors" title="Share list">
                     <div style="width:20px; height:20px;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C9.589 12.43 10.647 11.5 12 11.5c1.353 0 2.411.93 3.316 1.842m0 0a3 3 0 11-4.248-4.248m4.248 4.248L9.75 21H5.25V5.25h5.892m0 0a3 3 0 11-4.248-4.248"/></svg></div>
                 </button>
-                <button @click="openModal = true" class="p-2 bg-white rounded-xl shadow-sm border border-gray-100 text-gray-400 hover:text-emerald-500 transition-colors">
+                <button @click="openModal = true" class="p-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-gray-400 dark:text-gray-500 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
                     <div style="width:20px; height:20px;"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></div>
                 </button>
             </div>
@@ -25,20 +27,20 @@
 
         @if($isCritical)
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-                <div class="p-4 bg-red-50 border-l-4 border-red-500 rounded-lg shadow-sm">
-                    <p class="text-sm font-black text-red-600">🚨 CRITICAL: You have exceeded your budget by RM{{ number_format($budget->current_spending - $budget->limit_amount, 2) }}</p>
+                <div class="p-4 bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 rounded-lg shadow-sm">
+                    <p class="text-sm font-black text-red-600 dark:text-red-400">🚨 CRITICAL: You have exceeded your budget by RM{{ number_format($budget->current_spending - $budget->limit_amount, 2) }}</p>
                 </div>
             </div>
         @elseif($isHigh)
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-                <div class="p-4 bg-amber-50 border-l-4 border-amber-500 rounded-lg shadow-sm">
-                    <p class="text-sm font-black text-amber-600">⚠️ WARNING: You're at {{ round($percentSpent) }}% of your budget. Remaining: RM{{ number_format($budget->limit_amount - $budget->current_spending, 2) }}</p>
+                <div class="p-4 bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 rounded-lg shadow-sm">
+                    <p class="text-sm font-black text-amber-600 dark:text-amber-400">⚠️ WARNING: You're at {{ round($percentSpent) }}% of your budget. Remaining: RM{{ number_format($budget->limit_amount - $budget->current_spending, 2) }}</p>
                 </div>
             </div>
         @elseif($percentSpent >= 50)
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-                <div class="p-4 bg-blue-50 border-l-4 border-blue-500 rounded-lg shadow-sm">
-                    <p class="text-sm font-black text-blue-600">ℹ️ INFO: You're using {{ round($percentSpent) }}% of your budget. Keep tracking!</p>
+                <div class="p-4 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 rounded-lg shadow-sm">
+                    <p class="text-sm font-black text-blue-600 dark:text-blue-400">ℹ️ INFO: You're using {{ round($percentSpent) }}% of your budget. Keep tracking!</p>
                 </div>
             </div>
         @endif
@@ -224,7 +226,99 @@
             </div>
         </div>
 
-        <!-- Shopping Tips Section -->
+        <!-- Smart Recommendations Section - Retailer Comparison -->
+        @if(!empty($retailerComparison))
+        <div id="recommendations" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+            <h2 class="text-3xl font-black text-gray-900 tracking-tighter mb-2">💰 Smart Shopping Recommendations</h2>
+            <p class="text-gray-500 font-semibold mb-6">Compare total cost of your entire shopping list across retailers</p>
+            
+            <div class="bg-white rounded-[2.5rem] p-8 shadow-lg border border-gray-100 overflow-hidden">
+                <!-- Retailer Comparison Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    @foreach($retailerComparison as $comparison)
+                    <div class="relative rounded-3xl p-8 border-2 transition-all {{ $comparison['is_cheapest'] ? 'bg-gradient-to-br from-emerald-50 to-green-50 border-emerald-500 shadow-lg' : 'bg-gray-50 border-gray-200 hover:border-gray-300' }}">
+                        <!-- Best Value Badge -->
+                        @if($comparison['is_cheapest'])
+                        <div class="absolute -top-4 -right-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 py-2 rounded-full font-black text-xs shadow-lg">
+                            ⭐ BEST VALUE
+                        </div>
+                        @endif
+
+                        <!-- Retailer Name & Total -->
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-black text-gray-900 mb-2">🏪 {{ $comparison['retailer_name'] }}</h3>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Total Cost:</span>
+                                <span class="text-4xl font-black {{ $comparison['is_cheapest'] ? 'text-emerald-600' : 'text-gray-600' }}">RM {{ number_format($comparison['total_cost'], 2) }}</span>
+                            </div>
+                            <p class="text-xs text-gray-500 font-semibold mt-2">📦 {{ $comparison['item_count'] }} items in your list</p>
+                        </div>
+
+                        <!-- Savings Info -->
+                        @if($comparison['savings_vs_most_expensive'] > 0)
+                        <div class="bg-white rounded-2xl p-4 mb-4 border border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold text-gray-600 uppercase tracking-widest">You Save:</span>
+                                <div class="text-right">
+                                    <p class="text-2xl font-black text-emerald-600">RM {{ number_format($comparison['savings_vs_most_expensive'], 2) }}</p>
+                                    <p class="text-xs font-bold text-emerald-500">{{ $comparison['savings_percentage'] }}% off</p>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+
+                        <!-- Action Button -->
+                        <a href="#" class="w-full py-4 bg-gradient-to-r {{ $comparison['is_cheapest'] ? 'from-emerald-500 to-teal-500 text-white hover:shadow-lg' : 'from-gray-300 to-gray-400 text-gray-700 hover:from-gray-400 hover:to-gray-500' }} rounded-2xl font-black text-xs uppercase tracking-widest text-center transition-all block">
+                            {{ $comparison['is_cheapest'] ? '✓ Shop at ' . $comparison['retailer_name'] : 'Compare' }}
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+
+                <!-- Total Savings Summary -->
+                @php
+                    $cheapestTotal = $retailerComparison[0]['total_cost'] ?? 0;
+                    $mostExpensiveTotal = end($retailerComparison)['total_cost'] ?? 0;
+                    $maxSavings = $mostExpensiveTotal - $cheapestTotal;
+                @endphp
+                
+                @if($maxSavings > 0)
+                <div class="bg-gradient-to-r from-emerald-100 to-teal-100 border-2 border-emerald-500 rounded-2xl p-6 text-center mb-8">
+                    <p class="text-sm font-bold text-emerald-900 uppercase tracking-widest mb-2">💚 Maximum Savings Potential</p>
+                    <p class="text-4xl font-black text-emerald-700">RM {{ number_format($maxSavings, 2) }}</p>
+                    <p class="text-xs text-emerald-600 font-semibold mt-2">by shopping at {{ $retailerComparison[0]['retailer_name'] }} instead of {{ end($retailerComparison)['retailer_name'] }}</p>
+                </div>
+                @endif
+
+                <!-- Items Breakdown for Cheapest Retailer -->
+                <div class="border-t-2 border-gray-200 pt-8">
+                    <h3 class="text-lg font-black text-gray-900 mb-4">📋 Best Prices at {{ $retailerComparison[0]['retailer_name'] }}</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-gray-50 text-xs font-black text-gray-600 uppercase tracking-widest">
+                                <tr>
+                                    <th class="px-4 py-3">Item</th>
+                                    <th class="px-4 py-3 text-right">Qty</th>
+                                    <th class="px-4 py-3 text-right">Price</th>
+                                    <th class="px-4 py-3 text-right">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                @foreach($retailerComparison[0]['items'] as $item)
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-4 py-3 font-semibold text-gray-900">{{ $item['name'] }}</td>
+                                    <td class="px-4 py-3 text-right font-bold text-gray-600">{{ $item['quantity'] }}</td>
+                                    <td class="px-4 py-3 text-right font-bold text-emerald-600">RM {{ number_format($item['price'], 2) }}</td>
+                                    <td class="px-4 py-3 text-right font-black text-gray-900">RM {{ number_format($item['subtotal'], 2) }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
         @if(!empty($shoppingTips))
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
             <h2 class="text-2xl font-black text-gray-900 tracking-tighter mb-6">💡 Shopping Tips</h2>
@@ -340,4 +434,4 @@
         </div>
 
     </div>
-</x-app-layout>
+@endsection

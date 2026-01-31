@@ -6,34 +6,38 @@ use Illuminate\Database\Seeder;
 use App\Models\Retailer;
 use App\Models\Product;
 use App\Models\Price;
+use App\Models\ShoppingItem;
 
 class RetailerProductSeeder extends Seeder
 {
     public function run()
     {
-        // Retailers
+        // Disable foreign key checks
+        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        
+        // Clear old retailers and products (delete in correct order due to foreign keys)
+        Price::truncate();
+        ShoppingItem::truncate();
+        Product::truncate();
+        Retailer::truncate();
+        
+        // Re-enable foreign key checks
+        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+        // Retailers - Only Mydin & Shopee
         $retailers = [
-            "Lotus's",
             'Mydin',
-            'Giant',
             'Shopee',
-            'Lazada',
         ];
 
         $retailerBaseUrls = [
-            "Lotus's" => 'https://www.lotus.com',
             'Mydin' => 'https://www.mydin.com',
-            'Giant' => 'https://www.giant.com.my',
             'Shopee' => 'https://shopee.com.my',
-            'Lazada' => 'https://www.lazada.com.my',
         ];
 
         $retailerLogos = [
-            "Lotus's" => '/images/retailers/lotuss.svg',
             'Mydin' => '/images/retailers/mydin.svg',
-            'Giant' => '/images/retailers/giant.svg',
             'Shopee' => '/images/retailers/shopee.svg',
-            'Lazada' => '/images/retailers/lazada.svg',
         ];
 
         $retailerMap = [];
@@ -51,11 +55,8 @@ class RetailerProductSeeder extends Seeder
                 'category' => 'Grocery',
                 'image_url' => '/images/products/beras-faiza-10kg.svg',
                 'prices' => [
-                    "Lotus's" => 35.50,
                     'Mydin' => 36.20,
-                    'Giant' => 37.30,
                     'Shopee' => 39.00,
-                    'Lazada' => 38.50,
                 ],
             ],
             [
@@ -63,11 +64,8 @@ class RetailerProductSeeder extends Seeder
                 'category' => 'Grocery',
                 'image_url' => '/images/products/saji-cooking-oil-1kg.svg',
                 'prices' => [
-                    "Lotus's" => 6.90,
                     'Mydin' => 6.80,
-                    'Giant' => 7.00,
                     'Shopee' => 6.50,
-                    'Lazada' => 6.60,
                 ],
             ],
             [
@@ -75,11 +73,8 @@ class RetailerProductSeeder extends Seeder
                 'category' => 'Grocery',
                 'image_url' => '/images/products/milo-1kg.svg',
                 'prices' => [
-                    "Lotus's" => 25.90,
                     'Mydin' => 24.50,
-                    'Giant' => 26.00,
                     'Shopee' => 27.00,
-                    'Lazada' => 26.50,
                 ],
             ],
             [
@@ -87,11 +82,7 @@ class RetailerProductSeeder extends Seeder
                 'category' => 'Electronics',
                 'image_url' => '/images/products/samsung-galaxy-note-4.svg',
                 'prices' => [
-                    "Lotus's" => 0.00,
-                    'Mydin' => 0.00,
-                    'Giant' => 0.00,
                     'Shopee' => 650.00,
-                    'Lazada' => 645.00,
                 ],
             ],
             [
@@ -99,11 +90,7 @@ class RetailerProductSeeder extends Seeder
                 'category' => 'Electronics',
                 'image_url' => '/images/products/hp-victus-15.svg',
                 'prices' => [
-                    "Lotus's" => 0.00,
-                    'Mydin' => 0.00,
-                    'Giant' => 0.00,
                     'Shopee' => 4399.00,
-                    'Lazada' => 4299.00,
                 ],
             ],
         ];

@@ -11,6 +11,11 @@ class Price extends Model
 
     protected $fillable = ['product_id', 'retailer_id', 'amount', 'scraped_at', 'product_url'];
 
+    protected $casts = [
+        'amount' => 'decimal:2',
+        'scraped_at' => 'datetime',
+    ];
+
     public function retailer()
 {
     return $this->belongsTo(Retailer::class);

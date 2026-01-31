@@ -1,11 +1,13 @@
-<x-app-layout>
-    <div class="bg-gray-50 min-h-screen pb-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <a href="{{ route('dashboard') }}" class="inline-flex items-center gap-2 text-sm font-black text-gray-400 hover:text-emerald-500 uppercase tracking-widest transition-colors">
-                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="3" d="M15 19l-7-7 7-7"/></svg>
-                Back to Marketplace
-            </a>
-        </div>
+@extends('layouts.app')
+
+@section('content')
+<div class="bg-gray-50 min-h-screen pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <a href="{{ route('dashboard') }}" class="inline-flex items-center gap-2 text-sm font-black text-gray-400 hover:text-emerald-500 uppercase tracking-widest transition-colors">
+            <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="3" d="M15 19l-7-7 7-7"/></svg>
+            Back to Marketplace
+        </a>
+    </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div class="lg:col-span-7 space-y-8">
@@ -126,5 +128,4 @@
                 </div>
             </div>
         </div>
-    </div>
-</x-app-layout>
+@endsection

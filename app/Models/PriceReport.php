@@ -15,6 +15,8 @@ class PriceReport extends Model
         'user_id',
         'reported_price',
         'comment',
+        'status',
+        'admin_notes',
     ];
 
     public function product()

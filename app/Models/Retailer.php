@@ -10,5 +10,13 @@ class Retailer extends Model
     use HasFactory;
 
     // This line allows 'name', 'base_url', and 'logo_url' to be saved
-    protected $fillable = ['name', 'base_url', 'logo_url']; 
+    protected $fillable = ['name', 'base_url', 'logo_url'];
+
+    /**
+     * Get the prices for this retailer
+     */
+    public function prices()
+    {
+        return $this->hasMany(Price::class);
+    }
 }

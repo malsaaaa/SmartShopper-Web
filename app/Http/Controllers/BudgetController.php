@@ -9,6 +9,8 @@ use App\Models\Retailer;
 use App\Models\ShoppingItem;
 use App\Models\ShoppingListShare;
 use App\Models\User;
+use App\Services\RecommendationService;
+use App\Services\ShopeeCrawlerService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,19 +20,54 @@ use Illuminate\Support\Str;
 class BudgetController extends Controller
 {
     public function index() {
-        $products = Product::with('prices')->get();
+        // Get one product per category for the marketplace
+        $products = Product::with('prices')
+            ->orderBy('category')
+            ->get()
+            ->unique('category')
+            ->values();
+        
         $budget = $this->getBudget();
 
         // Get retailers in a specific display order
-        $retailerNames = ["Lotus's", 'Mydin', 'Giant', 'Shopee', 'Lazada'];
+        $retailerNames = ['Mydin', 'Shopee'];
         $retailers = collect($retailerNames)->map(fn($name) => Retailer::where('name', $name)->first())->filter()->values();
 
         return view('dashboard', compact('products', 'budget', 'retailers'));
     }
 
+    public function syncPrices($id)
+    {
+        $product = Product::findOrFail($id);
+    
+        // Example for a Retailer Scrape
+        $retailUrl = "https://www.mydin.com.my/product/" . $product->slug;
+        $output = shell_exec("python3 " . base_path('scrapers/retail_scraper.py') . " " . escapeshellarg($retailUrl));
+        $data = json_decode($output, true);
+
+        // Update prices table with scraped data
+        $product->prices()->updateOrCreate(
+            ['retailer_id' => 1], // Mydin ID
+            [
+            'amount' => preg_replace('/[^0-9.]/', '', $data['price']),
+            'updated_at' => now()
+            ]
+        );
+
+        return back()->with('success', 'Marketplace prices synced!');
+    }
+
     public function showBudget() {
         $budget = $this->getBudget();
         $items = ShoppingItem::where('user_id', Auth::id())->get();
+
+        // Get smart recommendations for cheaper alternatives
+        $recommendationService = new RecommendationService();
+        $recommendations = $recommendationService->getRecommendations($items);
+        $totalSavings = $recommendationService->getTotalPotentialSavings($recommendations);
+        
+        // Get retailer comparison for entire shopping list
+        $retailerComparison = $recommendationService->getRetailerComparison($items);
 
         // Compute spending per category by mapping items back to products (fallback: General)
         $categoryTotals = [];
@@ -84,11 +121,18 @@ class BudgetController extends Controller
         $budgetHistory = $this->getBudgetHistory();
         $sharedWith = ShoppingListShare::where('user_id', Auth::id())->with('sharedWithUser')->get();
 
-        return view('budget-list', compact('budget', 'items', 'categoryChartUrl', 'percentSpent', 'labels', 'data', 'colors', 'shoppingTips', 'budgetHistory', 'sharedWith'));
+        return view('budget-list', compact('budget', 'items', 'recommendations', 'totalSavings', 'categoryChartUrl', 'percentSpent', 'labels', 'data', 'colors', 'shoppingTips', 'budgetHistory', 'sharedWith', 'retailerComparison'));
     }
 
     public function show($id) {
         $product = Product::with('prices.retailer')->findOrFail($id);
+        
+        // Remove duplicate prices - keep only latest per retailer
+        $uniquePrices = $product->prices
+            ->unique('retailer_id')
+            ->values();
+        $product->setRelation('prices', $uniquePrices);
+        
         $budget = $this->getBudget();
 
         // Build price trend based on Price.scraped_at grouped by date
@@ -118,20 +162,56 @@ class BudgetController extends Controller
     public function search(Request $request) {
         $query = $request->input('query');
         $category = $request->input('category');
+        $source = $request->input('source', 'shopee'); // Default to shopee for real data
         
-        $productsQuery = Product::with('prices')->where('name', 'LIKE', "%{$query}%");
+        $products = [];
+        $crawledProducts = [];
+        $crawlDuration = 0;
         
-        if ($category) {
-            $productsQuery->where('category', $category);
+        // Crawl Shopee for products (only if query is provided)
+        if (!empty(trim($query))) {
+            $startTime = microtime(true);
+            
+            $crawlerService = new ShopeeCrawlerService();
+            $crawledData = $crawlerService->search(trim($query), 10); // Limit to 10 products
+            $crawledProducts = $crawlerService->formatProducts($crawledData);
+            
+            $crawlDuration = round((microtime(true) - $startTime) * 1000); // ms
+            
+            // Log crawler status
+            \Log::info('Shopee Crawler Results', [
+                'query' => $query,
+                'product_count' => count($crawledProducts),
+                'crawl_duration_ms' => $crawlDuration,
+                'first_product' => $crawledProducts[0] ?? null
+            ]);
         }
         
-        $products = $productsQuery->get();
+        // Search database products if requested
+        if ($source === 'all' || $source === 'database') {
+            $productsQuery = Product::with('prices')->where('name', 'LIKE', "%{$query}%");
+            
+            if ($category) {
+                $productsQuery->where('category', $category);
+            }
+            
+            $products = $productsQuery->get(); // Keep as Collection, not array
+        }
         
         // Get all available categories for filter
         $allCategories = Product::select('category')->distinct()->orderBy('category')->pluck('category');
         $budget = $this->getBudget();
         
-        return view('search', compact('products', 'budget', 'query', 'category', 'allCategories'));
+        return view('search', compact(
+            'products', 
+            'budget', 
+            'query', 
+            'category', 
+            'allCategories',
+            'crawledProducts',
+            'crawlDuration',
+            'source'
+        ));
     }
 
     public function check(Request $request) {
@@ -340,5 +420,16 @@ class BudgetController extends Controller
         return Auth::check() 
             ? Budget::firstOrCreate(['user_id' => Auth::id()], ['limit_amount' => 1000, 'current_spending' => 0])
             : (object)['limit_amount' => 1000, 'current_spending' => 0];
+    }
+
+    public function showProfile()
+    {
+        $user = Auth::user();
+        $shoppingListCount = ShoppingItem::where('user_id', $user->id)->count();
+        $budgetHistoryCount = BudgetHistory::where('user_id', $user->id)->count();
+        $reportCount = \App\Models\PriceReport::where('user_id', $user->id)->count();
+        $currentBudget = Budget::where('user_id', $user->id)->first();
+
+        return view('profile', compact('user', 'shoppingListCount', 'budgetHistoryCount', 'reportCount', 'currentBudget'));
     }
 }

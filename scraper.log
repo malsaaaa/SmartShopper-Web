@@ -1,0 +1,905 @@
+2026-01-20 12:09:03,351 - ERROR - Selenium scraping error: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=144.0.7559.59)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7ca93a545
+	0x7ff7ca93a5a0
+	0x7ff7ca6e0fed
+	0x7ff7ca6ddb24
+	0x7ff7ca6cdfc1
+	0x7ff7ca6cfe9f
+	0x7ff7ca6ce561
+	0x7ff7ca6cdd2b
+	0x7ff7ca6cd9e1
+	0x7ff7ca6cb5f7
+	0x7ff7ca6cbd72
+	0x7ff7ca6e5296
+	0x7ff7ca78af64
+	0x7ff7ca765c9a
+	0x7ff7ca78a10c
+	0x7ff7ca72cedc
+	0x7ff7ca72de23
+	0x7ff7cac18bb0
+	0x7ff7cac12fbd
+	0x7ff7cac3420a
+	0x7ff7ca956e15
+	0x7ff7ca95f4dc
+	0x7ff7ca943e54
+	0x7ff7ca944006
+	0x7ff7ca929e27
+	0x7ffefc08259d
+	0x7ffefd1eaf78
+
+2026-01-20 12:09:05,478 - ERROR - Request error for https://www.mydin.com.my/search?query=Milo: HTTPSConnectionPool(host='www.mydin.com.my', port=443): Max retries exceeded with url: /search?query=Milo (Caused by NameResolutionError("HTTPSConnection(host='www.mydin.com.my', port=443): Failed to resolve 'www.mydin.com.my' ([Errno 11001] getaddrinfo failed)"))
+2026-01-20 12:09:07,413 - ERROR - Selenium scraping error: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=144.0.7559.59)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7ca93a545
+	0x7ff7ca93a5a0
+	0x7ff7ca6e0fed
+	0x7ff7ca6ddb24
+	0x7ff7ca6cdfc1
+	0x7ff7ca6cfe9f
+	0x7ff7ca6ce561
+	0x7ff7ca6cdd2b
+	0x7ff7ca6cd9e1
+	0x7ff7ca6cb5f7
+	0x7ff7ca6cbd72
+	0x7ff7ca6e5296
+	0x7ff7ca78af64
+	0x7ff7ca765c9a
+	0x7ff7ca78a10c
+	0x7ff7ca72cedc
+	0x7ff7ca72de23
+	0x7ff7cac18bb0
+	0x7ff7cac12fbd
+	0x7ff7cac3420a
+	0x7ff7ca956e15
+	0x7ff7ca95f4dc
+	0x7ff7ca943e54
+	0x7ff7ca944006
+	0x7ff7ca929e27
+	0x7ffefc08259d
+	0x7ffefd1eaf78
+
+2026-01-20 12:09:09,563 - ERROR - Request error for https://www.mydin.com.my/search?query=Rice: HTTPSConnectionPool(host='www.mydin.com.my', port=443): Max retries exceeded with url: /search?query=Rice (Caused by NameResolutionError("HTTPSConnection(host='www.mydin.com.my', port=443): Failed to resolve 'www.mydin.com.my' ([Errno 11001] getaddrinfo failed)"))
+2026-01-20 12:09:11,459 - ERROR - Selenium scraping error: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=144.0.7559.59)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7ca93a545
+	0x7ff7ca93a5a0
+	0x7ff7ca6e0fed
+	0x7ff7ca6ddb24
+	0x7ff7ca6cdfc1
+	0x7ff7ca6cfe9f
+	0x7ff7ca6ce561
+	0x7ff7ca6cdd2b
+	0x7ff7ca6cd9e1
+	0x7ff7ca6cb5f7
+	0x7ff7ca6cbd72
+	0x7ff7ca6e5296
+	0x7ff7ca78af64
+	0x7ff7ca765c9a
+	0x7ff7ca78a10c
+	0x7ff7ca72cedc
+	0x7ff7ca72de23
+	0x7ff7cac18bb0
+	0x7ff7cac12fbd
+	0x7ff7cac3420a
+	0x7ff7ca956e15
+	0x7ff7ca95f4dc
+	0x7ff7ca943e54
+	0x7ff7ca944006
+	0x7ff7ca929e27
+	0x7ffefc08259d
+	0x7ffefd1eaf78
+
+2026-01-20 12:09:13,568 - ERROR - Request error for https://www.mydin.com.my/search?query=Sugar: HTTPSConnectionPool(host='www.mydin.com.my', port=443): Max retries exceeded with url: /search?query=Sugar (Caused by NameResolutionError("HTTPSConnection(host='www.mydin.com.my', port=443): Failed to resolve 'www.mydin.com.my' ([Errno 11001] getaddrinfo failed)"))
+2026-01-20 12:09:15,262 - ERROR - Selenium scraping error: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=144.0.7559.59)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7ca93a545
+	0x7ff7ca93a5a0
+	0x7ff7ca6e0fed
+	0x7ff7ca6ddb24
+	0x7ff7ca6cdfc1
+	0x7ff7ca6cfe9f
+	0x7ff7ca6ce561
+	0x7ff7ca6cdd2b
+	0x7ff7ca6cd9e1
+	0x7ff7ca6cb5f7
+	0x7ff7ca6cbd72
+	0x7ff7ca6e5296
+	0x7ff7ca78af64
+	0x7ff7ca765c9a
+	0x7ff7ca78a10c
+	0x7ff7ca72cedc
+	0x7ff7ca72de23
+	0x7ff7cac18bb0
+	0x7ff7cac12fbd
+	0x7ff7cac3420a
+	0x7ff7ca956e15
+	0x7ff7ca95f4dc
+	0x7ff7ca943e54
+	0x7ff7ca944006
+	0x7ff7ca929e27
+	0x7ffefc08259d
+	0x7ffefd1eaf78
+
+2026-01-20 12:09:17,363 - ERROR - Request error for https://www.mydin.com.my/search?query=Cooking Oil: HTTPSConnectionPool(host='www.mydin.com.my', port=443): Max retries exceeded with url: /search?query=Cooking%20Oil (Caused by NameResolutionError("HTTPSConnection(host='www.mydin.com.my', port=443): Failed to resolve 'www.mydin.com.my' ([Errno 11001] getaddrinfo failed)"))
+2026-01-20 12:09:19,086 - ERROR - Selenium scraping error: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=144.0.7559.59)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7ca93a545
+	0x7ff7ca93a5a0
+	0x7ff7ca6e0fed
+	0x7ff7ca6ddb24
+	0x7ff7ca6cdfc1
+	0x7ff7ca6cfe9f
+	0x7ff7ca6ce561
+	0x7ff7ca6cdd2b
+	0x7ff7ca6cd9e1
+	0x7ff7ca6cb5f7
+	0x7ff7ca6cbd72
+	0x7ff7ca6e5296
+	0x7ff7ca78af64
+	0x7ff7ca765c9a
+	0x7ff7ca78a10c
+	0x7ff7ca72cedc
+	0x7ff7ca72de23
+	0x7ff7cac18bb0
+	0x7ff7cac12fbd
+	0x7ff7cac3420a
+	0x7ff7ca956e15
+	0x7ff7ca95f4dc
+	0x7ff7ca943e54
+	0x7ff7ca944006
+	0x7ff7ca929e27
+	0x7ffefc08259d
+	0x7ffefd1eaf78
+
+2026-01-20 12:09:21,215 - ERROR - Request error for https://www.mydin.com.my/search?query=Eggs: HTTPSConnectionPool(host='www.mydin.com.my', port=443): Max retries exceeded with url: /search?query=Eggs (Caused by NameResolutionError("HTTPSConnection(host='www.mydin.com.my', port=443): Failed to resolve 'www.mydin.com.my' ([Errno 11001] getaddrinfo failed)"))
+2026-01-20 12:09:22,933 - ERROR - Selenium scraping error: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=144.0.7559.59)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7ca93a545
+	0x7ff7ca93a5a0
+	0x7ff7ca6e0fed
+	0x7ff7ca6ddb24
+	0x7ff7ca6cdfc1
+	0x7ff7ca6cfe9f
+	0x7ff7ca6ce561
+	0x7ff7ca6cdd2b
+	0x7ff7ca6cd9e1
+	0x7ff7ca6cb5f7
+	0x7ff7ca6cbd72
+	0x7ff7ca6e5296
+	0x7ff7ca78af64
+	0x7ff7ca765c9a
+	0x7ff7ca78a10c
+	0x7ff7ca72cedc
+	0x7ff7ca72de23
+	0x7ff7cac18bb0
+	0x7ff7cac12fbd
+	0x7ff7cac3420a
+	0x7ff7ca956e15
+	0x7ff7ca95f4dc
+	0x7ff7ca943e54
+	0x7ff7ca944006
+	0x7ff7ca929e27
+	0x7ffefc08259d
+	0x7ffefd1eaf78
+
+2026-01-20 12:09:25,022 - ERROR - Request error for https://www.mydin.com.my/search?query=Milk: HTTPSConnectionPool(host='www.mydin.com.my', port=443): Max retries exceeded with url: /search?query=Milk (Caused by NameResolutionError("HTTPSConnection(host='www.mydin.com.my', port=443): Failed to resolve 'www.mydin.com.my' ([Errno 11001] getaddrinfo failed)"))
+2026-01-20 12:09:26,758 - ERROR - Selenium scraping error: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=144.0.7559.59)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7ca93a545
+	0x7ff7ca93a5a0
+	0x7ff7ca6e0fed
+	0x7ff7ca6ddb24
+	0x7ff7ca6cdfc1
+	0x7ff7ca6cfe9f
+	0x7ff7ca6ce561
+	0x7ff7ca6cdd2b
+	0x7ff7ca6cd9e1
+	0x7ff7ca6cb5f7
+	0x7ff7ca6cbd72
+	0x7ff7ca6e5296
+	0x7ff7ca78af64
+	0x7ff7ca765c9a
+	0x7ff7ca78a10c
+	0x7ff7ca72cedc
+	0x7ff7ca72de23
+	0x7ff7cac18bb0
+	0x7ff7cac12fbd
+	0x7ff7cac3420a
+	0x7ff7ca956e15
+	0x7ff7ca95f4dc
+	0x7ff7ca943e54
+	0x7ff7ca944006
+	0x7ff7ca929e27
+	0x7ffefc08259d
+	0x7ffefd1eaf78
+
+2026-01-20 12:09:28,851 - ERROR - Request error for https://www.mydin.com.my/search?query=Bread: HTTPSConnectionPool(host='www.mydin.com.my', port=443): Max retries exceeded with url: /search?query=Bread (Caused by NameResolutionError("HTTPSConnection(host='www.mydin.com.my', port=443): Failed to resolve 'www.mydin.com.my' ([Errno 11001] getaddrinfo failed)"))
+2026-01-20 12:09:30,625 - ERROR - Selenium scraping error: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=144.0.7559.59)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7ca93a545
+	0x7ff7ca93a5a0
+	0x7ff7ca6e0fed
+	0x7ff7ca6ddb24
+	0x7ff7ca6cdfc1
+	0x7ff7ca6cfe9f
+	0x7ff7ca6ce561
+	0x7ff7ca6cdd2b
+	0x7ff7ca6cd9e1
+	0x7ff7ca6cb5f7
+	0x7ff7ca6cbd72
+	0x7ff7ca6e5296
+	0x7ff7ca78af64
+	0x7ff7ca765c9a
+	0x7ff7ca78a10c
+	0x7ff7ca72cedc
+	0x7ff7ca72de23
+	0x7ff7cac18bb0
+	0x7ff7cac12fbd
+	0x7ff7cac3420a
+	0x7ff7ca956e15
+	0x7ff7ca95f4dc
+	0x7ff7ca943e54
+	0x7ff7ca944006
+	0x7ff7ca929e27
+	0x7ffefc08259d
+	0x7ffefd1eaf78
+
+2026-01-20 12:09:32,717 - ERROR - Request error for https://www.giantmall.com.my/search?q=Milo: HTTPSConnectionPool(host='www.giantmall.com.my', port=443): Max retries exceeded with url: /search?q=Milo (Caused by NameResolutionError("HTTPSConnection(host='www.giantmall.com.my', port=443): Failed to resolve 'www.giantmall.com.my' ([Errno 11001] getaddrinfo failed)"))
+2026-01-20 12:09:34,516 - ERROR - Selenium scraping error: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=144.0.7559.59)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7ca93a545
+	0x7ff7ca93a5a0
+	0x7ff7ca6e0fed
+	0x7ff7ca6ddb24
+	0x7ff7ca6cdfc1
+	0x7ff7ca6cfe9f
+	0x7ff7ca6ce561
+	0x7ff7ca6cdd2b
+	0x7ff7ca6cd9e1
+	0x7ff7ca6cb5f7
+	0x7ff7ca6cbd72
+	0x7ff7ca6e5296
+	0x7ff7ca78af64
+	0x7ff7ca765c9a
+	0x7ff7ca78a10c
+	0x7ff7ca72cedc
+	0x7ff7ca72de23
+	0x7ff7cac18bb0
+	0x7ff7cac12fbd
+	0x7ff7cac3420a
+	0x7ff7ca956e15
+	0x7ff7ca95f4dc
+	0x7ff7ca943e54
+	0x7ff7ca944006
+	0x7ff7ca929e27
+	0x7ffefc08259d
+	0x7ffefd1eaf78
+
+2026-01-20 12:09:36,635 - ERROR - Request error for https://www.giantmall.com.my/search?q=Rice: HTTPSConnectionPool(host='www.giantmall.com.my', port=443): Max retries exceeded with url: /search?q=Rice (Caused by NameResolutionError("HTTPSConnection(host='www.giantmall.com.my', port=443): Failed to resolve 'www.giantmall.com.my' ([Errno 11001] getaddrinfo failed)"))
+2026-01-20 12:09:38,334 - ERROR - Selenium scraping error: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=144.0.7559.59)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7ca93a545
+	0x7ff7ca93a5a0
+	0x7ff7ca6e0fed
+	0x7ff7ca6ddb24
+	0x7ff7ca6cdfc1
+	0x7ff7ca6cfe9f
+	0x7ff7ca6ce561
+	0x7ff7ca6cdd2b
+	0x7ff7ca6cd9e1
+	0x7ff7ca6cb5f7
+	0x7ff7ca6cbd72
+	0x7ff7ca6e5296
+	0x7ff7ca78af64
+	0x7ff7ca765c9a
+	0x7ff7ca78a10c
+	0x7ff7ca72cedc
+	0x7ff7ca72de23
+	0x7ff7cac18bb0
+	0x7ff7cac12fbd
+	0x7ff7cac3420a
+	0x7ff7ca956e15
+	0x7ff7ca95f4dc
+	0x7ff7ca943e54
+	0x7ff7ca944006
+	0x7ff7ca929e27
+	0x7ffefc08259d
+	0x7ffefd1eaf78
+
+2026-01-20 12:09:40,424 - ERROR - Request error for https://www.giantmall.com.my/search?q=Sugar: HTTPSConnectionPool(host='www.giantmall.com.my', port=443): Max retries exceeded with url: /search?q=Sugar (Caused by NameResolutionError("HTTPSConnection(host='www.giantmall.com.my', port=443): Failed to resolve 'www.giantmall.com.my' ([Errno 11001] getaddrinfo failed)"))
+2026-01-20 12:09:42,144 - ERROR - Selenium scraping error: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=144.0.7559.59)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7ca93a545
+	0x7ff7ca93a5a0
+	0x7ff7ca6e0fed
+	0x7ff7ca6ddb24
+	0x7ff7ca6cdfc1
+	0x7ff7ca6cfe9f
+	0x7ff7ca6ce561
+	0x7ff7ca6cdd2b
+	0x7ff7ca6cd9e1
+	0x7ff7ca6cb5f7
+	0x7ff7ca6cbd72
+	0x7ff7ca6e5296
+	0x7ff7ca78af64
+	0x7ff7ca765c9a
+	0x7ff7ca78a10c
+	0x7ff7ca72cedc
+	0x7ff7ca72de23
+	0x7ff7cac18bb0
+	0x7ff7cac12fbd
+	0x7ff7cac3420a
+	0x7ff7ca956e15
+	0x7ff7ca95f4dc
+	0x7ff7ca943e54
+	0x7ff7ca944006
+	0x7ff7ca929e27
+	0x7ffefc08259d
+	0x7ffefd1eaf78
+
+2026-01-20 12:09:44,238 - ERROR - Request error for https://www.giantmall.com.my/search?q=Cooking Oil: HTTPSConnectionPool(host='www.giantmall.com.my', port=443): Max retries exceeded with url: /search?q=Cooking%20Oil (Caused by NameResolutionError("HTTPSConnection(host='www.giantmall.com.my', port=443): Failed to resolve 'www.giantmall.com.my' ([Errno 11001] getaddrinfo failed)"))
+2026-01-20 12:09:45,942 - ERROR - Selenium scraping error: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=144.0.7559.59)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7ca93a545
+	0x7ff7ca93a5a0
+	0x7ff7ca6e0fed
+	0x7ff7ca6ddb24
+	0x7ff7ca6cdfc1
+	0x7ff7ca6cfe9f
+	0x7ff7ca6ce561
+	0x7ff7ca6cdd2b
+	0x7ff7ca6cd9e1
+	0x7ff7ca6cb5f7
+	0x7ff7ca6cbd72
+	0x7ff7ca6e5296
+	0x7ff7ca78af64
+	0x7ff7ca765c9a
+	0x7ff7ca78a10c
+	0x7ff7ca72cedc
+	0x7ff7ca72de23
+	0x7ff7cac18bb0
+	0x7ff7cac12fbd
+	0x7ff7cac3420a
+	0x7ff7ca956e15
+	0x7ff7ca95f4dc
+	0x7ff7ca943e54
+	0x7ff7ca944006
+	0x7ff7ca929e27
+	0x7ffefc08259d
+	0x7ffefd1eaf78
+
+2026-01-20 12:09:48,048 - ERROR - Request error for https://www.giantmall.com.my/search?q=Eggs: HTTPSConnectionPool(host='www.giantmall.com.my', port=443): Max retries exceeded with url: /search?q=Eggs (Caused by NameResolutionError("HTTPSConnection(host='www.giantmall.com.my', port=443): Failed to resolve 'www.giantmall.com.my' ([Errno 11001] getaddrinfo failed)"))
+2026-01-20 12:09:49,789 - ERROR - Selenium scraping error: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=144.0.7559.59)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7ca93a545
+	0x7ff7ca93a5a0
+	0x7ff7ca6e0fed
+	0x7ff7ca6ddb24
+	0x7ff7ca6cdfc1
+	0x7ff7ca6cfe9f
+	0x7ff7ca6ce561
+	0x7ff7ca6cdd2b
+	0x7ff7ca6cd9e1
+	0x7ff7ca6cb5f7
+	0x7ff7ca6cbd72
+	0x7ff7ca6e5296
+	0x7ff7ca78af64
+	0x7ff7ca765c9a
+	0x7ff7ca78a10c
+	0x7ff7ca72cedc
+	0x7ff7ca72de23
+	0x7ff7cac18bb0
+	0x7ff7cac12fbd
+	0x7ff7cac3420a
+	0x7ff7ca956e15
+	0x7ff7ca95f4dc
+	0x7ff7ca943e54
+	0x7ff7ca944006
+	0x7ff7ca929e27
+	0x7ffefc08259d
+	0x7ffefd1eaf78
+
+2026-01-20 12:09:51,876 - ERROR - Request error for https://www.giantmall.com.my/search?q=Milk: HTTPSConnectionPool(host='www.giantmall.com.my', port=443): Max retries exceeded with url: /search?q=Milk (Caused by NameResolutionError("HTTPSConnection(host='www.giantmall.com.my', port=443): Failed to resolve 'www.giantmall.com.my' ([Errno 11001] getaddrinfo failed)"))
+2026-01-20 12:09:53,633 - ERROR - Selenium scraping error: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=144.0.7559.59)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7ca93a545
+	0x7ff7ca93a5a0
+	0x7ff7ca6e0fed
+	0x7ff7ca6ddb24
+	0x7ff7ca6cdfc1
+	0x7ff7ca6cfe9f
+	0x7ff7ca6ce561
+	0x7ff7ca6cdd2b
+	0x7ff7ca6cd9e1
+	0x7ff7ca6cb5f7
+	0x7ff7ca6cbd72
+	0x7ff7ca6e5296
+	0x7ff7ca78af64
+	0x7ff7ca765c9a
+	0x7ff7ca78a10c
+	0x7ff7ca72cedc
+	0x7ff7ca72de23
+	0x7ff7cac18bb0
+	0x7ff7cac12fbd
+	0x7ff7cac3420a
+	0x7ff7ca956e15
+	0x7ff7ca95f4dc
+	0x7ff7ca943e54
+	0x7ff7ca944006
+	0x7ff7ca929e27
+	0x7ffefc08259d
+	0x7ffefd1eaf78
+
+2026-01-20 12:09:55,722 - ERROR - Request error for https://www.giantmall.com.my/search?q=Bread: HTTPSConnectionPool(host='www.giantmall.com.my', port=443): Max retries exceeded with url: /search?q=Bread (Caused by NameResolutionError("HTTPSConnection(host='www.giantmall.com.my', port=443): Failed to resolve 'www.giantmall.com.my' ([Errno 11001] getaddrinfo failed)"))
+2026-01-20 12:10:03,925 - WARNING - Timeout waiting for content at https://shopee.com.my/search?keyword=Milo
+2026-01-20 12:10:15,209 - WARNING - Timeout waiting for content at https://shopee.com.my/search?keyword=Rice
+2026-01-20 12:10:25,683 - WARNING - Timeout waiting for content at https://shopee.com.my/search?keyword=Sugar
+2026-01-20 12:15:55,092 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None)': /session/5f297cc4a0d830179c456a0056ad4d3c
+2026-01-20 12:15:59,158 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=64975): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")': /session/5f297cc4a0d830179c456a0056ad4d3c
+2026-01-20 12:16:03,231 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='localhost', port=64975): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it")': /session/5f297cc4a0d830179c456a0056ad4d3c
+2026-01-20 12:16:15,576 - WARNING - Timeout waiting for content at https://mydin.my/search?query=Milo
+2026-01-20 12:16:26,346 - WARNING - Timeout waiting for content at https://mydin.my/search?query=Milo
+2026-01-20 12:16:35,491 - WARNING - Timeout waiting for content at https://mydin.my/search?query=Rice
+2026-01-20 12:16:44,619 - WARNING - Timeout waiting for content at https://mydin.my/search?query=Sugar
+2026-01-20 12:16:54,054 - WARNING - Timeout waiting for content at https://mydin.my/search?query=Cooking Oil
+2026-01-20 12:17:03,524 - WARNING - Timeout waiting for content at https://mydin.my/search?query=Eggs
+2026-01-20 12:17:12,669 - WARNING - Timeout waiting for content at https://mydin.my/search?query=Milk
+2026-01-20 12:17:21,801 - WARNING - Timeout waiting for content at https://mydin.my/search?query=Bread
+2026-01-20 12:17:24,432 - INFO - Starting price scraping...
+2026-01-20 12:17:24,433 - INFO - Scraping complete. Found 2 items
+2026-01-20 12:17:24,961 - INFO - Starting price scraping...
+2026-01-20 12:17:24,961 - INFO - Scraping complete. Found 2 items
+2026-01-20 12:17:32,405 - INFO - Starting price scraping...
+2026-01-20 12:17:32,405 - INFO - Scraping complete. Found 2 items
+2026-01-20 12:17:45,839 - INFO - Starting price scraping...
+2026-01-20 12:17:45,839 - INFO - Scraping complete. Found 2 items
+2026-01-20 12:23:02,466 - INFO - Starting price scraping...
+2026-01-20 12:23:10,030 - WARNING - Timeout waiting for content at https://mydin.my/search?search=Milo
+2026-01-20 12:23:19,615 - WARNING - Timeout waiting for content at https://mydin.my/search?search=Rice
+2026-01-20 12:23:29,079 - WARNING - Timeout waiting for content at https://mydin.my/search?search=Sugar
+2026-01-20 12:23:38,267 - WARNING - Timeout waiting for content at https://mydin.my/search?search=Cooking Oil
+2026-01-20 12:23:47,395 - WARNING - Timeout waiting for content at https://mydin.my/search?search=Eggs
+2026-01-20 12:23:56,622 - WARNING - Timeout waiting for content at https://mydin.my/search?search=Milk
+2026-01-20 12:24:05,726 - WARNING - Timeout waiting for content at https://mydin.my/search?search=Bread
+2026-01-20 12:24:07,856 - INFO - Scraping complete. Found 0 items
+2026-01-20 12:24:36,561 - INFO - Starting price scraping from Mydin...
+2026-01-20 12:24:36,561 - INFO - Scraping complete. Found 3 items
+2026-01-20 12:29:44,781 - INFO - Starting price scraping from Mydin...
+2026-01-20 12:29:44,781 - INFO - Scraping Mydin...
+2026-01-20 12:30:02,714 - WARNING - Timeout waiting for content at https://mydin.my/search?search=Milo
+2026-01-20 12:30:22,098 - WARNING - Timeout waiting for content at https://mydin.my/search?search=Rice
+2026-01-20 12:30:41,389 - WARNING - Timeout waiting for content at https://mydin.my/search?search=Sugar
+2026-01-20 12:31:00,695 - WARNING - Timeout waiting for content at https://mydin.my/search?search=Cooking Oil
+2026-01-20 12:31:20,019 - WARNING - Timeout waiting for content at https://mydin.my/search?search=Eggs
+2026-01-20 12:31:39,312 - WARNING - Timeout waiting for content at https://mydin.my/search?search=Milk
+2026-01-20 12:31:58,619 - WARNING - Timeout waiting for content at https://mydin.my/search?search=Bread
+2026-01-20 12:32:00,763 - INFO - Scraping complete. Found 0 items
+2026-01-20 12:34:31,838 - INFO - Starting price scraping from Mydin...
+2026-01-20 12:34:31,838 - INFO - Scraping Mydin...
+2026-01-20 12:34:31,838 - INFO - Searching for: Milo at https://mydin.my/search?search=Milo
+2026-01-20 12:34:48,214 - WARNING - Timeout waiting for content at https://mydin.my/search?search=Milo
+2026-01-20 12:34:50,381 - INFO - Scraped 0 products from Mydin
+2026-01-20 12:34:50,382 - INFO - Scraping complete. Found 0 items
+2026-01-20 12:36:00,412 - INFO - Starting price scraping from Mydin...
+2026-01-20 12:36:00,412 - INFO - Scraping Mydin...
+2026-01-20 12:36:00,412 - INFO - Adding 10 Milo products from Mydin
+2026-01-20 12:36:00,413 - INFO - Scraping complete. Found 10 items
+2026-01-20 22:28:31,146 - INFO - Starting price scraping from Mydin and Lotus's...
+2026-01-20 22:28:31,146 - INFO - Scraping Mydin...
+2026-01-20 22:28:31,147 - INFO - Adding 10 Milo products from Mydin
+2026-01-20 22:28:31,147 - INFO - Scraping Lotus's...
+2026-01-20 22:28:31,147 - INFO - Added 6 matching Milo products from Lotus's
+2026-01-20 22:28:31,147 - INFO - Scraping complete. Found 16 items
+2026-01-20 22:30:40,460 - INFO - Starting price scraping from Mydin and Lotus's...
+2026-01-20 22:30:40,460 - INFO - Scraping Mydin...
+2026-01-20 22:30:40,460 - INFO - Adding 6 Milo products from Mydin
+2026-01-20 22:30:40,460 - INFO - Scraping Lotus's...
+2026-01-20 22:30:40,460 - INFO - Added 6 matching Milo products from Lotus's
+2026-01-20 22:30:40,460 - INFO - Scraping complete. Found 12 items
+2026-01-20 22:36:30,381 - INFO - Starting price scraping from Mydin and Lotus's...
+2026-01-20 22:36:30,381 - INFO - Scraping Mydin...
+2026-01-20 22:36:30,381 - INFO - Adding 6 Milo products from Mydin
+2026-01-20 22:36:30,382 - INFO - Scraping Lotus's...
+2026-01-20 22:36:30,382 - INFO - Added 6 matching Milo products from Lotus's
+2026-01-20 22:36:30,382 - INFO - Scraping complete. Found 12 items
+2026-01-20 22:36:42,504 - INFO - Starting price scraping from Mydin and Lotus's...
+2026-01-20 22:36:42,504 - INFO - Scraping Mydin...
+2026-01-20 22:36:42,504 - INFO - Adding 6 Milo products from Mydin
+2026-01-20 22:36:42,504 - INFO - Scraping Lotus's...
+2026-01-20 22:36:42,504 - INFO - Added 6 matching Milo products from Lotus's
+2026-01-20 22:36:42,504 - INFO - Scraping complete. Found 12 items
+2026-01-20 22:36:56,297 - INFO - Starting price scraping from Mydin and Lotus's...
+2026-01-20 22:36:56,298 - INFO - Scraping Mydin...
+2026-01-20 22:36:56,298 - INFO - Adding 6 Milo products from Mydin
+2026-01-20 22:36:56,298 - INFO - Scraping Lotus's...
+2026-01-20 22:36:56,298 - INFO - Added 6 matching Milo products from Lotus's
+2026-01-20 22:36:56,298 - INFO - Scraping complete. Found 12 items
+2026-01-20 22:37:23,447 - INFO - Starting price scraping from Mydin and Lotus's...
+2026-01-20 22:37:23,447 - INFO - Scraping Mydin...
+2026-01-20 22:37:23,447 - INFO - Adding 6 Milo products from Mydin
+2026-01-20 22:37:23,447 - INFO - Scraping Lotus's...
+2026-01-20 22:37:23,447 - INFO - Added 6 matching Milo products from Lotus's
+2026-01-20 22:37:23,447 - INFO - Scraping complete. Found 12 items
+2026-01-20 22:38:38,212 - INFO - Starting price scraping from Mydin and Lotus's...
+2026-01-20 22:38:38,213 - INFO - Scraping Mydin...
+2026-01-20 22:38:38,213 - INFO - Adding 6 Milo products from Mydin
+2026-01-20 22:38:38,213 - INFO - Scraping Lotus's...
+2026-01-20 22:38:38,213 - INFO - Added 6 matching Milo products from Lotus's
+2026-01-20 22:38:38,213 - INFO - Scraping complete. Found 12 items
+2026-01-20 22:39:06,494 - INFO - Starting price scraping from Mydin and Lotus's...
+2026-01-20 22:39:06,494 - INFO - Scraping Mydin...
+2026-01-20 22:39:06,494 - INFO - Adding 6 Milo products from Mydin
+2026-01-20 22:39:06,494 - INFO - Scraping Lotus's...
+2026-01-20 22:39:06,494 - INFO - Added 6 matching Milo products from Lotus's
+2026-01-20 22:39:06,494 - INFO - Scraping complete. Found 12 items
+2026-01-20 22:43:52,812 - INFO - Starting price scraping from Mydin and Lotus's...
+2026-01-20 22:43:52,813 - INFO - Scraping Mydin...
+2026-01-20 22:43:52,813 - INFO - Adding 6 Milo products from Mydin
+2026-01-20 22:43:52,813 - INFO - Scraping Lotus's...
+2026-01-20 22:43:52,813 - INFO - Added 6 matching Milo products from Lotus's
+2026-01-20 22:43:52,813 - INFO - Scraping complete. Found 12 items
+2026-01-20 22:44:03,130 - INFO - Starting price scraping from Mydin and Lotus's...
+2026-01-20 22:44:03,130 - INFO - Scraping Mydin...
+2026-01-20 22:44:03,130 - INFO - Adding 6 Milo products from Mydin
+2026-01-20 22:44:03,130 - INFO - Scraping Lotus's...
+2026-01-20 22:44:03,130 - INFO - Added 6 matching Milo products from Lotus's
+2026-01-20 22:44:03,130 - INFO - Scraping complete. Found 12 items
+2026-01-20 22:44:34,708 - INFO - Starting price scraping from Mydin and Lotus's...
+2026-01-20 22:44:34,708 - INFO - Scraping Mydin...
+2026-01-20 22:44:34,708 - INFO - Adding 6 Milo products from Mydin
+2026-01-20 22:44:34,708 - INFO - Scraping Lotus's...
+2026-01-20 22:44:34,708 - INFO - Added 6 matching Milo products from Lotus's
+2026-01-20 22:44:34,708 - INFO - Scraping complete. Found 12 items
+2026-01-20 22:47:32,017 - INFO - Starting price scraping from Mydin and Lotus's...
+2026-01-20 22:47:32,018 - INFO - Scraping Mydin...
+2026-01-20 22:47:32,018 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Milo
+2026-01-20 22:48:26,332 - WARNING - Timeout loading https://mydin.my/search?search=Milo
+2026-01-20 22:48:28,483 - INFO - Using test data: Adding 6 Milo products from Mydin
+2026-01-20 22:48:28,483 - INFO - Scraping Lotus's...
+2026-01-20 22:48:28,483 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Milo?sort=relevance:DESC
+2026-01-20 22:48:51,253 - INFO - Added 6 matching Milo products from Lotus's
+2026-01-20 22:48:51,253 - INFO - Scraping complete. Found 12 items
+2026-01-20 22:50:25,657 - INFO - Starting price scraping from Mydin and Lotus's...
+2026-01-20 22:50:25,657 - INFO - Scraping Mydin...
+2026-01-20 22:50:25,657 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Milo
+2026-01-20 22:50:42,580 - WARNING - Timeout loading https://mydin.my/search?search=Milo
+2026-01-20 22:50:44,703 - INFO - Using test data: Adding 6 Milo products from Mydin
+2026-01-20 22:50:44,703 - INFO - Scraping Lotus's...
+2026-01-20 22:50:44,703 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Milo?sort=relevance:DESC
+2026-01-20 22:51:01,795 - INFO - Added 6 matching Milo products from Lotus's
+2026-01-20 22:51:01,795 - INFO - Scraping complete. Found 12 items
+2026-01-20 23:16:54,571 - INFO - Starting price scraping from Mydin, Lotus's, Shopee, and Lazada...
+2026-01-20 23:16:54,572 - INFO - Scraping Mydin...
+2026-01-20 23:16:54,572 - INFO - Searching for Maggi Instant Noodles in Mydin
+2026-01-20 23:16:54,572 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Maggi
+2026-01-20 23:17:11,645 - WARNING - Timeout loading https://mydin.my/search?search=Maggi
+2026-01-20 23:17:13,765 - INFO - Adding 3 test products for Maggi Instant Noodles from Mydin
+2026-01-20 23:17:13,765 - INFO - Searching for Cooking Oil 1L in Mydin
+2026-01-20 23:17:13,765 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Cooking Oil
+2026-01-20 23:17:30,256 - WARNING - Timeout loading https://mydin.my/search?search=Cooking Oil
+2026-01-20 23:17:32,414 - INFO - Adding 3 test products for Cooking Oil 1L from Mydin
+2026-01-20 23:17:32,414 - INFO - Searching for Condensed Milk in Mydin
+2026-01-20 23:17:32,414 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Condensed Milk
+2026-01-20 23:17:48,768 - WARNING - Timeout loading https://mydin.my/search?search=Condensed Milk
+2026-01-20 23:17:50,933 - INFO - Adding 3 test products for Condensed Milk from Mydin
+2026-01-20 23:17:50,934 - INFO - Scraping Lotus's...
+2026-01-20 23:17:50,934 - INFO - Searching for Maggi Instant Noodles in Lotus's
+2026-01-20 23:17:50,934 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Maggi?sort=relevance:DESC
+2026-01-20 23:17:59,189 - INFO - Adding 3 test products for Maggi Instant Noodles from Lotus's
+2026-01-20 23:17:59,189 - INFO - Searching for Cooking Oil 1L in Lotus's
+2026-01-20 23:17:59,189 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Cooking Oil?sort=relevance:DESC
+2026-01-20 23:18:07,218 - INFO - Adding 3 test products for Cooking Oil 1L from Lotus's
+2026-01-20 23:18:07,218 - INFO - Searching for Condensed Milk in Lotus's
+2026-01-20 23:18:07,218 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Condensed Milk?sort=relevance:DESC
+2026-01-20 23:18:15,484 - INFO - Adding 3 test products for Condensed Milk from Lotus's
+2026-01-20 23:18:15,484 - INFO - Scraping Shopee...
+2026-01-20 23:18:15,484 - INFO - Searching for Maggi Instant Noodles in Shopee
+2026-01-20 23:18:15,484 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Maggi
+2026-01-20 23:18:32,882 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Maggi
+2026-01-20 23:18:35,078 - INFO - Adding 3 test products for Maggi Instant Noodles from Shopee
+2026-01-20 23:18:35,078 - INFO - Searching for Cooking Oil 1L in Shopee
+2026-01-20 23:18:35,078 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Cooking Oil
+2026-01-20 23:18:52,447 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Cooking Oil
+2026-01-20 23:18:54,590 - INFO - Adding 3 test products for Cooking Oil 1L from Shopee
+2026-01-20 23:18:54,590 - INFO - Searching for Condensed Milk in Shopee
+2026-01-20 23:18:54,590 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Condensed Milk
+2026-01-20 23:19:11,579 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Condensed Milk
+2026-01-20 23:19:13,714 - INFO - Adding 3 test products for Condensed Milk from Shopee
+2026-01-20 23:19:13,714 - INFO - Scraping Lazada...
+2026-01-20 23:19:13,714 - INFO - Searching for Maggi Instant Noodles in Lazada
+2026-01-20 23:19:13,714 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Maggi
+2026-01-20 23:19:32,035 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Maggi
+2026-01-20 23:19:34,172 - INFO - Adding 3 test products for Maggi Instant Noodles from Lazada
+2026-01-20 23:19:34,172 - INFO - Searching for Cooking Oil 1L in Lazada
+2026-01-20 23:19:34,172 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Cooking Oil
+2026-01-20 23:19:52,810 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Cooking Oil
+2026-01-20 23:19:54,956 - INFO - Adding 3 test products for Cooking Oil 1L from Lazada
+2026-01-20 23:19:54,957 - INFO - Searching for Condensed Milk in Lazada
+2026-01-20 23:19:54,957 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Condensed Milk
+2026-01-20 23:20:13,302 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Condensed Milk
+2026-01-20 23:20:15,448 - INFO - Adding 3 test products for Condensed Milk from Lazada
+2026-01-20 23:20:15,448 - INFO - Scraping complete. Found 36 items
+2026-01-20 23:20:31,664 - INFO - Starting price scraping from Mydin, Lotus's, Shopee, and Lazada...
+2026-01-20 23:20:31,665 - INFO - Scraping Mydin...
+2026-01-20 23:20:31,665 - INFO - Searching for Maggi Instant Noodles in Mydin
+2026-01-20 23:20:31,665 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Maggi
+2026-01-20 23:20:48,828 - WARNING - Timeout loading https://mydin.my/search?search=Maggi
+2026-01-20 23:20:50,988 - INFO - Adding 3 test products for Maggi Instant Noodles from Mydin
+2026-01-20 23:20:50,988 - INFO - Searching for Cooking Oil 1L in Mydin
+2026-01-20 23:20:50,988 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Cooking Oil
+2026-01-20 23:21:07,271 - WARNING - Timeout loading https://mydin.my/search?search=Cooking Oil
+2026-01-20 23:21:09,427 - INFO - Adding 3 test products for Cooking Oil 1L from Mydin
+2026-01-20 23:21:09,427 - INFO - Searching for Condensed Milk in Mydin
+2026-01-20 23:21:09,427 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Condensed Milk
+2026-01-20 23:21:25,991 - WARNING - Timeout loading https://mydin.my/search?search=Condensed Milk
+2026-01-20 23:21:28,105 - INFO - Adding 3 test products for Condensed Milk from Mydin
+2026-01-20 23:21:28,105 - INFO - Scraping Lotus's...
+2026-01-20 23:21:28,105 - INFO - Searching for Maggi Instant Noodles in Lotus's
+2026-01-20 23:21:28,105 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Maggi?sort=relevance:DESC
+2026-01-20 23:21:35,930 - INFO - Adding 3 test products for Maggi Instant Noodles from Lotus's
+2026-01-20 23:21:35,930 - INFO - Searching for Cooking Oil 1L in Lotus's
+2026-01-20 23:21:35,930 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Cooking Oil?sort=relevance:DESC
+2026-01-20 23:21:43,942 - INFO - Adding 3 test products for Cooking Oil 1L from Lotus's
+2026-01-20 23:21:43,942 - INFO - Searching for Condensed Milk in Lotus's
+2026-01-20 23:21:43,942 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Condensed Milk?sort=relevance:DESC
+2026-01-20 23:21:52,613 - INFO - Adding 3 test products for Condensed Milk from Lotus's
+2026-01-20 23:21:52,613 - INFO - Scraping Shopee...
+2026-01-20 23:21:52,613 - INFO - Searching for Maggi Instant Noodles in Shopee
+2026-01-20 23:21:52,613 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Maggi
+2026-01-20 23:22:10,346 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Maggi
+2026-01-20 23:22:12,495 - INFO - Adding 3 test products for Maggi Instant Noodles from Shopee
+2026-01-20 23:22:12,495 - INFO - Searching for Cooking Oil 1L in Shopee
+2026-01-20 23:22:12,495 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Cooking Oil
+2026-01-20 23:22:29,866 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Cooking Oil
+2026-01-20 23:22:32,017 - INFO - Adding 3 test products for Cooking Oil 1L from Shopee
+2026-01-20 23:22:32,017 - INFO - Searching for Condensed Milk in Shopee
+2026-01-20 23:22:32,017 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Condensed Milk
+2026-01-20 23:22:50,321 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Condensed Milk
+2026-01-20 23:22:52,486 - INFO - Adding 3 test products for Condensed Milk from Shopee
+2026-01-20 23:22:52,486 - INFO - Scraping Lazada...
+2026-01-20 23:22:52,486 - INFO - Searching for Maggi Instant Noodles in Lazada
+2026-01-20 23:22:52,486 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Maggi
+2026-01-20 23:23:10,947 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Maggi
+2026-01-20 23:23:13,094 - INFO - Adding 3 test products for Maggi Instant Noodles from Lazada
+2026-01-20 23:23:13,094 - INFO - Searching for Cooking Oil 1L in Lazada
+2026-01-20 23:23:13,094 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Cooking Oil
+2026-01-20 23:23:31,228 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Cooking Oil
+2026-01-20 23:23:33,373 - INFO - Adding 3 test products for Cooking Oil 1L from Lazada
+2026-01-20 23:23:33,373 - INFO - Searching for Condensed Milk in Lazada
+2026-01-20 23:23:33,373 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Condensed Milk
+2026-01-20 23:23:51,621 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Condensed Milk
+2026-01-20 23:23:53,770 - INFO - Adding 3 test products for Condensed Milk from Lazada
+2026-01-20 23:23:53,770 - INFO - Scraping complete. Found 36 items
+2026-01-21 20:59:30,000 - INFO - Starting price scraping from Mydin, Lotus's, Shopee, and Lazada...
+2026-01-21 20:59:30,001 - INFO - Scraping Mydin...
+2026-01-21 20:59:30,001 - INFO - Searching for Maggi Instant Noodles in Mydin
+2026-01-21 20:59:30,001 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Maggi
+2026-01-21 20:59:48,313 - WARNING - Timeout loading https://mydin.my/search?search=Maggi
+2026-01-21 20:59:50,499 - INFO - Adding 3 test products for Maggi Instant Noodles from Mydin
+2026-01-21 20:59:50,499 - INFO - Searching for Cooking Oil 1L in Mydin
+2026-01-21 20:59:50,499 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Cooking Oil
+2026-01-21 21:00:07,221 - WARNING - Timeout loading https://mydin.my/search?search=Cooking Oil
+2026-01-21 21:00:09,381 - INFO - Adding 3 test products for Cooking Oil 1L from Mydin
+2026-01-21 21:00:09,381 - INFO - Searching for Condensed Milk in Mydin
+2026-01-21 21:00:09,381 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Condensed Milk
+2026-01-21 21:00:25,637 - WARNING - Timeout loading https://mydin.my/search?search=Condensed Milk
+2026-01-21 21:00:27,816 - INFO - Adding 3 test products for Condensed Milk from Mydin
+2026-01-21 21:00:27,816 - INFO - Scraping Lotus's...
+2026-01-21 21:00:27,816 - INFO - Searching for Maggi Instant Noodles in Lotus's
+2026-01-21 21:00:27,816 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Maggi?sort=relevance:DESC
+2026-01-21 21:00:35,504 - INFO - Adding 3 test products for Maggi Instant Noodles from Lotus's
+2026-01-21 21:00:35,504 - INFO - Searching for Cooking Oil 1L in Lotus's
+2026-01-21 21:00:35,504 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Cooking Oil?sort=relevance:DESC
+2026-01-21 21:00:43,380 - INFO - Adding 3 test products for Cooking Oil 1L from Lotus's
+2026-01-21 21:00:43,380 - INFO - Searching for Condensed Milk in Lotus's
+2026-01-21 21:00:43,380 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Condensed Milk?sort=relevance:DESC
+2026-01-21 21:00:51,290 - INFO - Adding 3 test products for Condensed Milk from Lotus's
+2026-01-21 21:00:51,290 - INFO - Scraping Shopee...
+2026-01-21 21:00:51,290 - INFO - Searching for Maggi Instant Noodles in Shopee
+2026-01-21 21:00:51,290 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Maggi
+2026-01-21 21:01:08,592 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Maggi
+2026-01-21 21:01:10,754 - INFO - Adding 3 test products for Maggi Instant Noodles from Shopee
+2026-01-21 21:01:10,754 - INFO - Searching for Cooking Oil 1L in Shopee
+2026-01-21 21:01:10,754 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Cooking Oil
+2026-01-21 21:01:27,971 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Cooking Oil
+2026-01-21 21:01:30,140 - INFO - Adding 3 test products for Cooking Oil 1L from Shopee
+2026-01-21 21:01:30,140 - INFO - Searching for Condensed Milk in Shopee
+2026-01-21 21:01:30,140 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Condensed Milk
+2026-01-21 21:01:50,239 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Condensed Milk
+2026-01-21 21:01:52,397 - INFO - Adding 3 test products for Condensed Milk from Shopee
+2026-01-21 21:01:52,397 - INFO - Scraping Lazada...
+2026-01-21 21:01:52,397 - INFO - Searching for Maggi Instant Noodles in Lazada
+2026-01-21 21:01:52,397 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Maggi
+2026-01-21 21:02:11,223 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Maggi
+2026-01-21 21:02:13,346 - INFO - Adding 3 test products for Maggi Instant Noodles from Lazada
+2026-01-21 21:02:13,347 - INFO - Searching for Cooking Oil 1L in Lazada
+2026-01-21 21:02:13,347 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Cooking Oil
+2026-01-21 21:02:31,911 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Cooking Oil
+2026-01-21 21:02:34,078 - INFO - Adding 3 test products for Cooking Oil 1L from Lazada
+2026-01-21 21:02:34,079 - INFO - Searching for Condensed Milk in Lazada
+2026-01-21 21:02:34,079 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Condensed Milk
+2026-01-21 21:02:53,082 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Condensed Milk
+2026-01-21 21:02:55,261 - INFO - Adding 3 test products for Condensed Milk from Lazada
+2026-01-21 21:02:55,261 - INFO - Scraping complete. Found 36 items
+2026-01-21 21:05:16,282 - INFO - Starting price scraping from Mydin, Lotus's, Shopee, and Lazada...
+2026-01-21 21:05:16,283 - INFO - Scraping Mydin...
+2026-01-21 21:05:16,283 - INFO - Searching for Maggi Instant Noodles in Mydin
+2026-01-21 21:05:16,283 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Maggi
+2026-01-21 21:05:33,736 - WARNING - Timeout loading https://mydin.my/search?search=Maggi
+2026-01-21 21:05:35,911 - INFO - Adding 3 test products for Maggi Instant Noodles from Mydin
+2026-01-21 21:05:35,911 - INFO - Searching for Cooking Oil 1L in Mydin
+2026-01-21 21:05:35,911 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Cooking Oil
+2026-01-21 21:05:52,675 - WARNING - Timeout loading https://mydin.my/search?search=Cooking Oil
+2026-01-21 21:05:54,846 - INFO - Adding 3 test products for Cooking Oil 1L from Mydin
+2026-01-21 21:05:54,847 - INFO - Searching for Condensed Milk in Mydin
+2026-01-21 21:05:54,847 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Condensed Milk
+2026-01-21 21:06:12,565 - WARNING - Timeout loading https://mydin.my/search?search=Condensed Milk
+2026-01-21 21:06:14,709 - INFO - Adding 3 test products for Condensed Milk from Mydin
+2026-01-21 21:06:14,710 - INFO - Scraping Lotus's...
+2026-01-21 21:06:14,710 - INFO - Searching for Maggi Instant Noodles in Lotus's
+2026-01-21 21:06:14,710 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Maggi?sort=relevance:DESC
+2026-01-21 21:06:22,610 - INFO - Adding 3 test products for Maggi Instant Noodles from Lotus's
+2026-01-21 21:06:22,611 - INFO - Searching for Cooking Oil 1L in Lotus's
+2026-01-21 21:06:22,611 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Cooking Oil?sort=relevance:DESC
+2026-01-21 21:06:30,881 - INFO - Adding 3 test products for Cooking Oil 1L from Lotus's
+2026-01-21 21:06:30,881 - INFO - Searching for Condensed Milk in Lotus's
+2026-01-21 21:06:30,881 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Condensed Milk?sort=relevance:DESC
+2026-01-21 21:06:38,457 - INFO - Adding 3 test products for Condensed Milk from Lotus's
+2026-01-21 21:06:38,457 - INFO - Scraping Shopee...
+2026-01-21 21:06:38,457 - INFO - Searching for Maggi Instant Noodles in Shopee
+2026-01-21 21:06:38,457 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Maggi
+2026-01-21 21:06:55,665 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Maggi
+2026-01-21 21:06:57,855 - INFO - Adding 3 test products for Maggi Instant Noodles from Shopee
+2026-01-21 21:06:57,855 - INFO - Searching for Cooking Oil 1L in Shopee
+2026-01-21 21:06:57,856 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Cooking Oil
+2026-01-21 21:07:16,879 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Cooking Oil
+2026-01-21 21:08:20,665 - INFO - Adding 3 test products for Cooking Oil 1L from Shopee
+2026-01-21 21:08:20,665 - INFO - Searching for Condensed Milk in Shopee
+2026-01-21 21:08:20,665 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Condensed Milk
+2026-01-21 21:08:39,545 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Condensed Milk
+2026-01-21 21:09:43,504 - INFO - Adding 3 test products for Condensed Milk from Shopee
+2026-01-21 21:09:43,504 - INFO - Scraping Lazada...
+2026-01-21 21:09:43,504 - INFO - Searching for Maggi Instant Noodles in Lazada
+2026-01-21 21:09:43,504 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Maggi
+2026-01-21 21:10:02,648 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Maggi
+2026-01-21 21:11:06,486 - INFO - Adding 3 test products for Maggi Instant Noodles from Lazada
+2026-01-21 21:11:06,486 - INFO - Searching for Cooking Oil 1L in Lazada
+2026-01-21 21:11:06,486 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Cooking Oil
+2026-01-21 21:11:25,302 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Cooking Oil
+2026-01-21 21:11:35,146 - INFO - Adding 3 test products for Cooking Oil 1L from Lazada
+2026-01-21 21:11:35,146 - INFO - Searching for Condensed Milk in Lazada
+2026-01-21 21:11:35,146 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Condensed Milk
+2026-01-21 21:11:57,789 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Condensed Milk
+2026-01-21 21:12:52,739 - INFO - Adding 3 test products for Condensed Milk from Lazada
+2026-01-21 21:12:52,739 - INFO - Scraping complete. Found 36 items
+2026-01-21 21:36:14,677 - INFO - Starting price scraping from Mydin, Lotus's, Shopee, and Lazada...
+2026-01-21 21:36:14,677 - INFO - Scraping Mydin...
+2026-01-21 21:36:14,677 - INFO - Searching for Maggi Instant Noodles in Mydin
+2026-01-21 21:36:14,677 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Maggi
+2026-01-21 21:36:31,474 - WARNING - Timeout loading https://mydin.my/search?search=Maggi
+2026-01-21 21:36:33,627 - INFO - Adding 3 test products for Maggi Instant Noodles from Mydin
+2026-01-21 21:36:33,627 - INFO - Searching for Cooking Oil 1L in Mydin
+2026-01-21 21:36:33,627 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Cooking Oil
+2026-01-21 21:36:49,853 - WARNING - Timeout loading https://mydin.my/search?search=Cooking Oil
+2026-01-21 21:36:52,031 - INFO - Adding 3 test products for Cooking Oil 1L from Mydin
+2026-01-21 21:36:52,031 - INFO - Searching for Condensed Milk in Mydin
+2026-01-21 21:36:52,031 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Condensed Milk
+2026-01-21 21:37:08,425 - WARNING - Timeout loading https://mydin.my/search?search=Condensed Milk
+2026-01-21 21:37:10,582 - INFO - Adding 3 test products for Condensed Milk from Mydin
+2026-01-21 21:37:10,582 - INFO - Scraping Lotus's...
+2026-01-21 21:37:10,582 - INFO - Searching for Maggi Instant Noodles in Lotus's
+2026-01-21 21:37:10,582 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Maggi?sort=relevance:DESC
+2026-01-21 21:37:17,834 - INFO - Adding 3 test products for Maggi Instant Noodles from Lotus's
+2026-01-21 21:37:17,834 - INFO - Searching for Cooking Oil 1L in Lotus's
+2026-01-21 21:37:17,834 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Cooking Oil?sort=relevance:DESC
+2026-01-21 21:37:25,210 - INFO - Adding 3 test products for Cooking Oil 1L from Lotus's
+2026-01-21 21:37:25,210 - INFO - Searching for Condensed Milk in Lotus's
+2026-01-21 21:37:25,210 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Condensed Milk?sort=relevance:DESC
+2026-01-21 21:37:33,231 - INFO - Adding 3 test products for Condensed Milk from Lotus's
+2026-01-21 21:37:33,232 - INFO - Scraping Shopee...
+2026-01-21 21:37:33,232 - INFO - Searching for Maggi Instant Noodles in Shopee
+2026-01-21 21:37:33,232 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Maggi
+2026-01-21 21:37:51,808 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Maggi
+2026-01-21 21:37:53,942 - INFO - Adding 3 test products for Maggi Instant Noodles from Shopee
+2026-01-21 21:37:53,942 - INFO - Searching for Cooking Oil 1L in Shopee
+2026-01-21 21:37:53,942 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Cooking Oil
+2026-01-21 21:38:11,355 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Cooking Oil
+2026-01-21 21:38:13,495 - INFO - Adding 3 test products for Cooking Oil 1L from Shopee
+2026-01-21 21:38:13,495 - INFO - Searching for Condensed Milk in Shopee
+2026-01-21 21:38:13,495 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Condensed Milk
+2026-01-21 21:38:30,403 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Condensed Milk
+2026-01-21 21:38:32,545 - INFO - Adding 3 test products for Condensed Milk from Shopee
+2026-01-21 21:38:32,545 - INFO - Scraping Lazada...
+2026-01-21 21:38:32,545 - INFO - Searching for Maggi Instant Noodles in Lazada
+2026-01-21 21:38:32,545 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Maggi
+2026-01-21 21:38:51,515 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Maggi
+2026-01-21 21:38:53,661 - INFO - Adding 3 test products for Maggi Instant Noodles from Lazada
+2026-01-21 21:38:53,661 - INFO - Searching for Cooking Oil 1L in Lazada
+2026-01-21 21:38:53,661 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Cooking Oil
+2026-01-21 21:39:11,687 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Cooking Oil
+2026-01-21 21:39:13,814 - INFO - Adding 3 test products for Cooking Oil 1L from Lazada
+2026-01-21 21:39:13,814 - INFO - Searching for Condensed Milk in Lazada
+2026-01-21 21:39:13,814 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Condensed Milk
+2026-01-21 21:39:32,015 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Condensed Milk
+2026-01-21 21:39:34,148 - INFO - Adding 3 test products for Condensed Milk from Lazada
+2026-01-21 21:39:34,148 - INFO - Scraping complete. Found 36 items
+2026-01-21 21:56:03,299 - INFO - Starting price scraping from Mydin, Lotus's, Shopee, and Lazada...
+2026-01-21 21:56:03,299 - INFO - Scraping Mydin...
+2026-01-21 21:56:03,299 - INFO - Searching for Maggi Instant Noodles in Mydin
+2026-01-21 21:56:03,299 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Maggi
+2026-01-21 21:56:21,366 - WARNING - Timeout loading https://mydin.my/search?search=Maggi
+2026-01-21 21:56:23,674 - INFO - Adding 3 test products for Maggi Instant Noodles from Mydin
+2026-01-21 21:56:23,674 - INFO - Searching for Cooking Oil 1L in Mydin
+2026-01-21 21:56:23,674 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Cooking Oil
+2026-01-21 21:56:40,378 - WARNING - Timeout loading https://mydin.my/search?search=Cooking Oil
+2026-01-21 21:56:42,554 - INFO - Adding 3 test products for Cooking Oil 1L from Mydin
+2026-01-21 21:56:42,554 - INFO - Searching for Condensed Milk in Mydin
+2026-01-21 21:56:42,554 - INFO - Attempting to scrape real products from https://mydin.my/search?search=Condensed Milk
+2026-01-21 21:56:59,320 - WARNING - Timeout loading https://mydin.my/search?search=Condensed Milk
+2026-01-21 21:57:01,478 - INFO - Adding 3 test products for Condensed Milk from Mydin
+2026-01-21 21:57:01,478 - INFO - Scraping Lotus's...
+2026-01-21 21:57:01,478 - INFO - Searching for Maggi Instant Noodles in Lotus's
+2026-01-21 21:57:01,478 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Maggi?sort=relevance:DESC
+2026-01-21 21:57:08,739 - INFO - Adding 3 test products for Maggi Instant Noodles from Lotus's
+2026-01-21 21:57:08,740 - INFO - Searching for Cooking Oil 1L in Lotus's
+2026-01-21 21:57:08,740 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Cooking Oil?sort=relevance:DESC
+2026-01-21 21:57:16,293 - INFO - Adding 3 test products for Cooking Oil 1L from Lotus's
+2026-01-21 21:57:16,293 - INFO - Searching for Condensed Milk in Lotus's
+2026-01-21 21:57:16,293 - INFO - Attempting to scrape real products from https://www.lotuss.com.my/en/search/Condensed Milk?sort=relevance:DESC
+2026-01-21 21:57:23,303 - INFO - Adding 3 test products for Condensed Milk from Lotus's
+2026-01-21 21:57:23,303 - INFO - Scraping Shopee...
+2026-01-21 21:57:23,303 - INFO - Searching for Maggi Instant Noodles in Shopee
+2026-01-21 21:57:23,303 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Maggi
+2026-01-21 21:57:41,654 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Maggi
+2026-01-21 21:57:43,800 - INFO - Adding 3 test products for Maggi Instant Noodles from Shopee
+2026-01-21 21:57:43,800 - INFO - Searching for Cooking Oil 1L in Shopee
+2026-01-21 21:57:43,800 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Cooking Oil
+2026-01-21 21:58:02,120 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Cooking Oil
+2026-01-21 21:58:04,279 - INFO - Adding 3 test products for Cooking Oil 1L from Shopee
+2026-01-21 21:58:04,279 - INFO - Searching for Condensed Milk in Shopee
+2026-01-21 21:58:04,279 - INFO - Attempting to scrape real products from https://shopee.com.my/supermarket?keyword=Condensed Milk
+2026-01-21 21:58:21,905 - WARNING - Timeout loading https://shopee.com.my/supermarket?keyword=Condensed Milk
+2026-01-21 21:58:24,052 - INFO - Adding 3 test products for Condensed Milk from Shopee
+2026-01-21 21:58:24,052 - INFO - Scraping Lazada...
+2026-01-21 21:58:24,052 - INFO - Searching for Maggi Instant Noodles in Lazada
+2026-01-21 21:58:24,052 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Maggi
+2026-01-21 21:58:42,889 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Maggi
+2026-01-21 21:58:45,054 - INFO - Adding 3 test products for Maggi Instant Noodles from Lazada
+2026-01-21 21:58:45,054 - INFO - Searching for Cooking Oil 1L in Lazada
+2026-01-21 21:58:45,054 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Cooking Oil
+2026-01-21 21:59:04,065 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Cooking Oil
+2026-01-21 21:59:06,208 - INFO - Adding 3 test products for Cooking Oil 1L from Lazada
+2026-01-21 21:59:06,208 - INFO - Searching for Condensed Milk in Lazada
+2026-01-21 21:59:06,208 - INFO - Attempting to scrape real products from https://www.lazada.com.my/catalog/?q=Condensed Milk
+2026-01-21 21:59:25,607 - WARNING - Timeout loading https://www.lazada.com.my/catalog/?q=Condensed Milk
+2026-01-21 21:59:27,745 - INFO - Adding 3 test products for Condensed Milk from Lazada
+2026-01-21 21:59:27,745 - INFO - Scraping complete. Found 36 items

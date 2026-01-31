@@ -13,9 +13,27 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
+
+        <div>
+            <x-input-label for="profile_picture" :value="__('Profile Picture')" />
+            <div class="mt-2 flex items-center gap-6">
+                <div class="w-20 h-20 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
+                    @if($user->profile_picture)
+                        <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="{{ $user->name }}" class="w-full h-full object-cover">
+                    @else
+                        <svg class="w-10 h-10 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    @endif
+                </div>
+                <div class="flex-1">
+                    <input id="profile_picture" name="profile_picture" type="file" accept="image/*" class="block w-full text-sm text-gray-500 dark:text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 dark:file:bg-gray-700 file:text-emerald-700 dark:file:text-emerald-400 hover:file:bg-emerald-100 dark:hover:file:bg-gray-600" />
+                    <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">PNG, JPG, GIF up to 2MB</p>
+                </div>
+            </div>
+            <x-input-error class="mt-2" :messages="$errors->get('profile_picture')" />
+        </div>
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
