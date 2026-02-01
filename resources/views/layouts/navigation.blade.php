@@ -24,6 +24,12 @@
             </div>
 
             <div class="flex items-center gap-4">
+                <a href="https://t.me/SmartShopper_MY_Bot" target="_blank" rel="noopener noreferrer" class="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest transition-all hover:scale-105" title="Chat with our Telegram Bot">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.4-1.13 7.1-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.98-.65-.34-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.006-.03.01-.15-.07-.21-.08-.06-.2-.04-.28-.02-.12.02-2.02 1.29-5.7 3.76-.54.37-1.02.55-1.45.54-.48-.01-1.4-.27-2.08-.5-.84-.27-1.5-.42-1.44-.88.03-.24.37-.48 1.02-.72 4.02-1.75 6.7-2.91 8.05-3.48 1.84-.78 2.22-.92 2.47-.92.05 0 .19.01.28.07.07.05.11.15.13.24.01.06.02.13.02.21z"/>
+                    </svg>
+                    💬 Telegram Bot
+                </a>
                 <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                     <svg id="sun-icon" class="w-5 h-5 text-yellow-500 hidden" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v2a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l-2.12-2.12a1 1 0 111.414-1.414l2.12 2.12a1 1 0 11-1.414 1.414zM2.05 6.464l2.12-2.12a1 1 0 011.414 1.414l-2.12 2.12a1 1 0 01-1.414-1.414zM17.657 16.97l-2.12-2.12a1 1 0 111.414-1.414l2.12 2.12a1 1 0 11-1.414 1.414zM5.464 5.465a1 1 0 111.414-1.414l2.12 2.12a1 1 0 11-1.414 1.414l-2.12-2.12zM5.464 15.536a1 1 0 11-1.414-1.414l2.12-2.12a1 1 0 111.414 1.414l-2.12 2.12zM12 20a1 1 0 01-1-1v-2a1 1 0 112 0v2a1 1 0 01-1 1z" clip-rule="evenodd"/></svg>
                     <svg id="moon-icon" class="w-5 h-5 text-gray-600 dark:text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>

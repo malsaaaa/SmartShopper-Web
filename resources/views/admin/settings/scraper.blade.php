@@ -116,10 +116,15 @@
         <!-- Manual Scraper Controls -->
         <div class="bg-white rounded-lg shadow p-6 mb-6">
             <h2 class="text-xl font-bold text-gray-900 mb-4">▶️ Manual Control</h2>
-            <button type="button" onclick="runScraperNow()" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 font-bold transition-all">
-                🔄 Run Scraper Now
-            </button>
-            <p class="text-sm text-gray-600 mt-2">Manually trigger a scrape immediately without waiting for the schedule</p>
+            <div class="flex gap-4">
+                <button type="button" onclick="runScraperNow()" class="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 font-bold transition-all flex items-center gap-2">
+                    🔄 Run Scraper Now
+                </button>
+                <button type="button" onclick="testScraperNow()" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-bold transition-all flex items-center gap-2">
+                    🧪 Test Scraper
+                </button>
+            </div>
+            <p class="text-sm text-gray-600 mt-3">Use <strong>Run Scraper Now</strong> to perform actual scraping, or <strong>Test Scraper</strong> to preview mock scraper logs</p>
         </div>
 
         <!-- Scraper Logs -->
@@ -175,6 +180,38 @@ function runScraperNow() {
         alert('Error: ' + error.message);
         btn.disabled = false;
         btn.innerHTML = originalText;
+    });
+}
+
+function testScraperNow() {
+    const btn = event.target;
+    const originalHtml = btn.innerHTML;
+    
+    btn.disabled = true;
+    btn.innerHTML = '<span>⏳</span> <span>Testing...</span>';
+    
+    fetch('{{ route("admin.scraper.run") }}', {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('✓ ' + data.message);
+            setTimeout(() => location.reload(), 1000);
+        } else {
+            alert('✗ ' + data.message);
+            btn.disabled = false;
+            btn.innerHTML = originalHtml;
+        }
+    })
+    .catch(error => {
+        alert('Error: ' + error.message);
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
     });
 }
 </script>

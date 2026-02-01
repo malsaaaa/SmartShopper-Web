@@ -72,4 +72,54 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    /**
+     * Connect Telegram account
+     */
+    public function connectTelegram(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'telegram_code' => 'required|string|max:16',
+        ]);
+
+        $code = $request->input('telegram_code');
+        
+        // The code format is the first 8 characters of md5(chatId)
+        // We need to find the user with matching telegram_chat_id
+        // For now, we'll use a cache-based approach similar to the login token
+        
+        $telegramData = \Illuminate\Support\Facades\Cache::get("telegram_connect_{$code}");
+
+        if (!$telegramData) {
+            return Redirect::route('profile.edit')->withErrors(['telegram_code' => 'Invalid or expired code. Please try /connect again in Telegram.']);
+        }
+
+        $telegramId = $telegramData['telegram_id'];
+        $chatId = $telegramData['chat_id'];
+
+        // If another user has this telegram_id, remove it from them (likely a temporary account from /login)
+        $existingUser = \App\Models\User::where('telegram_id', $telegramId)->where('id', '!=', $request->user()->id)->first();
+        
+        if ($existingUser) {
+            // If the existing user only has a telegram account (no real email), delete it
+            if (strpos($existingUser->email, 'telegram_') === 0) {
+                // Delete temporary telegram-only account
+                $existingUser->delete();
+            } else {
+                // If they have a real account, just remove the telegram link
+                $existingUser->update(['telegram_id' => null, 'telegram_chat_id' => null]);
+            }
+        }
+
+        // Link Telegram to current user
+        $request->user()->update([
+            'telegram_id' => $telegramId,
+            'telegram_chat_id' => $chatId,
+        ]);
+
+        // Remove the code from cache
+        \Illuminate\Support\Facades\Cache::forget("telegram_connect_{$code}");
+
+        return Redirect::route('profile.edit')->with('status', 'telegram-connected');
+    }
 }

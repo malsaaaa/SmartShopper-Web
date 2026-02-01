@@ -20,12 +20,22 @@ use Illuminate\Support\Str;
 class BudgetController extends Controller
 {
     public function index() {
-        // Get one product per category for the marketplace
-        $products = Product::with('prices')
-            ->orderBy('category')
-            ->get()
-            ->unique('category')
-            ->values();
+        // Get one product from each price comparison category: Milo, Maggi, Coffee
+        $milo = Product::where('name', 'LIKE', '%Milo%')->with('prices')->first();
+        $maggi = Product::where('name', 'LIKE', '%Maggi%')->with('prices')->first();
+        $coffee = Product::where('name', 'LIKE', '%Coffee%')
+            ->orWhere('name', 'LIKE', '%Nescafé%')
+            ->orWhere('name', 'LIKE', '%Kopiko%')
+            ->orWhere('name', 'LIKE', '%Jacobs%')
+            ->orWhere('name', 'LIKE', '%Illy%')
+            ->orWhere('name', 'LIKE', '%Lavazza%')
+            ->orWhere('name', 'LIKE', '%Highlands%')
+            ->orWhere('name', 'LIKE', '%Kopi%')
+            ->with('prices')
+            ->first();
+        
+        // Create a collection with the three featured products
+        $products = collect([$milo, $maggi, $coffee])->filter();
         
         $budget = $this->getBudget();
 
@@ -60,6 +70,15 @@ class BudgetController extends Controller
     public function showBudget() {
         $budget = $this->getBudget();
         $items = ShoppingItem::where('user_id', Auth::id())->get();
+
+        // Load product images for each shopping item from products table
+        foreach ($items as $item) {
+            $product = Product::where('name', $item->name)->first();
+            // Use product's image_url if shopping item doesn't have one
+            if (!$item->image_url && $product) {
+                $item->image_url = $product->image_url;
+            }
+        }
 
         // Get smart recommendations for cheaper alternatives
         $recommendationService = new RecommendationService();
@@ -167,41 +186,71 @@ class BudgetController extends Controller
         $products = [];
         $crawledProducts = [];
         $crawlDuration = 0;
+        $useDatabase = false;
         
-        // Crawl Shopee for products (only if query is provided)
-        if (!empty(trim($query))) {
-            $startTime = microtime(true);
+        // Check if query matches milo, maggi, or coffee - search database first
+        $lowerQuery = strtolower(trim($query));
+        if (in_array($lowerQuery, ['milo', 'maggi', 'coffee'])) {
+            $useDatabase = true;
+            $source = 'database';
             
-            $crawlerService = new ShopeeCrawlerService();
-            $crawledData = $crawlerService->search(trim($query), 10); // Limit to 10 products
-            $crawledProducts = $crawlerService->formatProducts($crawledData);
-            
-            $crawlDuration = round((microtime(true) - $startTime) * 1000); // ms
-            
-            // Log crawler status
-            \Log::info('Shopee Crawler Results', [
-                'query' => $query,
-                'product_count' => count($crawledProducts),
-                'crawl_duration_ms' => $crawlDuration,
-                'first_product' => $crawledProducts[0] ?? null
-            ]);
-        }
-        
-        // Search database products if requested
-        if ($source === 'all' || $source === 'database') {
-            $productsQuery = Product::with('prices')->where('name', 'LIKE', "%{$query}%");
-            
-            if ($category) {
-                $productsQuery->where('category', $category);
+            // Search database for matching products
+            if ($lowerQuery === 'milo') {
+                $products = Product::where('name', 'LIKE', '%Milo%')->with('prices')->get();
+            } elseif ($lowerQuery === 'maggi') {
+                $products = Product::where('name', 'LIKE', '%Maggi%')->with('prices')->get();
+            } elseif ($lowerQuery === 'coffee') {
+                $products = Product::where('name', 'LIKE', '%Coffee%')
+                    ->orWhere('name', 'LIKE', '%Nescafé%')
+                    ->orWhere('name', 'LIKE', '%Kopiko%')
+                    ->orWhere('name', 'LIKE', '%Jacobs%')
+                    ->orWhere('name', 'LIKE', '%Illy%')
+                    ->orWhere('name', 'LIKE', '%Lavazza%')
+                    ->orWhere('name', 'LIKE', '%Highlands%')
+                    ->orWhere('name', 'LIKE', '%Kopi%')
+                    ->with('prices')
+                    ->get();
+            }
+        } else {
+            // Crawl Shopee for products (only if query is provided)
+            if (!empty(trim($query))) {
+                $startTime = microtime(true);
+                
+                $crawlerService = new ShopeeCrawlerService();
+                $crawledData = $crawlerService->search(trim($query), 10); // Limit to 10 products
+                $crawledProducts = $crawlerService->formatProducts($crawledData);
+                
+                $crawlDuration = round((microtime(true) - $startTime) * 1000); // ms
+                
+                // Log crawler status
+                \Log::info('Shopee Crawler Results', [
+                    'query' => $query,
+                    'product_count' => count($crawledProducts),
+                    'crawl_duration_ms' => $crawlDuration,
+                    'first_product' => $crawledProducts[0] ?? null
+                ]);
             }
             
-            $products = $productsQuery->get(); // Keep as Collection, not array
+            // Search database products if requested
+            if ($source === 'all' || $source === 'database') {
+                $productsQuery = Product::with('prices')->where('name', 'LIKE', "%{$query}%");
+                
+                if ($category) {
+                    $productsQuery->where('category', $category);
+                }
+                
+                $products = $productsQuery->get(); // Keep as Collection, not array
+            }
         }
         
         // Get all available categories for filter
         $allCategories = Product::select('category')->distinct()->orderBy('category')->pluck('category');
         $budget = $this->getBudget();
         
+        // Get retailers for price comparison
+        $retailerNames = ['Mydin', 'Shopee'];
+        $retailers = collect($retailerNames)->map(fn($name) => Retailer::where('name', $name)->first())->filter()->values();
+
         return view('search', compact(
             'products', 
             'budget', 
@@ -210,7 +259,8 @@ class BudgetController extends Controller
             'allCategories',
             'crawledProducts',
             'crawlDuration',
-            'source'
+            'source',
+            'retailers'
         ));
     }
 
@@ -237,12 +287,17 @@ class BudgetController extends Controller
                         $item->update(['price' => $request->price]);
                     }
                 } else {
+                    // Find product image URL
+                    $product = Product::where('name', $request->name)->first();
+                    $imageUrl = $product?->image_url ?? null;
+                    
                     ShoppingItem::create([
                         'user_id' => Auth::id(),
                         'name' => $request->name,
                         'retailer' => $request->retailer,
                         'price' => $request->price,
                         'quantity' => 1,
+                        'image_url' => $imageUrl,
                     ]);
                 }
             });

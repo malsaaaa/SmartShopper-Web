@@ -1,0 +1,115 @@
+{
+  "shopee_products": [
+    {
+      "name": "Milo Activ-Go Chocolate Malt Beverage 400g",
+      "price": "RM 12.50",
+      "image_url": "https://down-my.img.susercontent.com/...",
+      "url": "https://shopee.com.my/product/...",
+      "retailer": "Shopee Supermarket"
+    },
+    {
+      "name": "Milo Regular Powdered Drink 1kg",
+      "price": "RM 18.90",
+      "image_url": "https://down-my.img.susercontent.com/...",
+      "url": "https://shopee.com.my/product/...",
+      "retailer": "Shopee Supermarket"
+    },
+    {
+      "name": "Milo 3in1 Less Sugar 20 Sticks",
+      "price": "RM 8.50",
+      "image_url": "https://down-my.img.susercontent.com/...",
+      "url": "https://shopee.com.my/product/...",
+      "retailer": "Shopee Supermarket"
+    },
+    {
+      "name": "Milo Chocolate Powder 400g",
+      "price": "RM 11.99",
+      "image_url": "https://down-my.img.susercontent.com/...",
+      "url": "https://shopee.com.my/product/...",
+      "retailer": "Shopee Supermarket"
+    },
+    {
+      "name": "Milo Activ-Go 600g",
+      "price": "RM 14.50",
+      "image_url": "https://down-my.img.susercontent.com/...",
+      "url": "https://shopee.com.my/product/...",
+      "retailer": "Shopee Supermarket"
+    }
+  ],
+  "mydin_products": [
+    {
+      "name": "Milo Activ-Go Chocolate 400g",
+      "price": "RM 13.99",
+      "image_url": "https://mydin.my/media/...",
+      "url": "https://mydin.my/product/...",
+      "retailer": "Mydin Marketplace"
+    },
+    {
+      "name": "Milo Regular 1kg",
+      "price": "RM 19.50",
+      "image_url": "https://mydin.my/media/...",
+      "url": "https://mydin.my/product/...",
+      "retailer": "Mydin Marketplace"
+    },
+    {
+      "name": "Milo Less Sugar 20 Sachets",
+      "price": "RM 9.20",
+      "image_url": "https://mydin.my/media/...",
+      "url": "https://mydin.my/product/...",
+      "retailer": "Mydin Marketplace"
+    },
+    {
+      "name": "Milo Powder 400g",
+      "price": "RM 12.99",
+      "image_url": "https://mydin.my/media/...",
+      "url": "https://mydin.my/product/...",
+      "retailer": "Mydin Marketplace"
+    },
+    {
+      "name": "Milo Activ-Go 600g",
+      "price": "RM 16.50",
+      "image_url": "https://mydin.my/media/...",
+      "url": "https://mydin.my/product/...",
+      "retailer": "Mydin Marketplace"
+    }
+  ],
+  "price_comparison": {
+    "products_compared": 5,
+    "price_advantages": [
+      {
+        "product": "Milo 3in1 Less Sugar 20 Sticks",
+        "shopee_price": "RM 8.50",
+        "mydin_price": "RM 9.20",
+        "savings_on_shopee": "RM 0.70",
+        "percentage": "7.6%"
+      },
+      {
+        "product": "Milo Chocolate Powder 400g",
+        "shopee_price": "RM 11.99",
+        "mydin_price": "RM 12.99",
+        "savings_on_shopee": "RM 1.00",
+        "percentage": "7.7%"
+      },
+      {
+        "product": "Milo Activ-Go 600g",
+        "shopee_price": "RM 14.50",
+        "mydin_price": "RM 16.50",
+        "savings_on_shopee": "RM 2.00",
+        "percentage": "12.1%"
+      }
+    ]
+  },
+  "summary": {
+    "shopee_count": 5,
+    "mydin_count": 5,
+    "scrape_date": "2026-02-01T23:38:33.825004",
+    "status": "Ready for live scraping when site structure is determined",
+    "next_steps": [
+      "Both Shopee and Mydin use heavy JavaScript rendering",
+      "Recommended: Use Firecrawl or similar headless browser solution",
+      "Or: Parse API responses when product data is loaded",
+      "Update selectors based on actual DOM structure when verified"
+    ],
+    "note": "Shopee HTML loaded, parsing in progress..."
+  }
+}

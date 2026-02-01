@@ -22,6 +22,9 @@ class User extends Authenticatable
         'email',
         'password',
         'profile_picture',
+        'is_admin',
+        'telegram_id',
+        'telegram_chat_id',
     ];
 
     /**
@@ -43,4 +46,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Get the shopping items for this user
+     */
+    public function shoppingItems()
+    {
+        return $this->hasMany(\App\Models\ShoppingItem::class);
+    }
 }

@@ -15,74 +15,13 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <!-- Crawl Status Info -->
-        @if(!empty($crawledProducts))
-        <div class="mb-8 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border-l-4 border-blue-500 rounded-lg p-6">
-            <div class="flex items-center justify-between flex-wrap gap-4">
-                <div>
-                    <p class="text-sm font-black text-blue-900 dark:text-blue-200 uppercase tracking-widest">🛒 Shopee Search Results</p>
-                    <p class="text-gray-600 dark:text-gray-300 font-semibold mt-1">Found {{ count($crawledProducts) }} products @if($crawlDuration > 100) from Shopee.com.my (crawled in {{ $crawlDuration }}ms) @else (demo data - real crawler currently unavailable) @endif</p>
-                    @if($crawlDuration < 100)
-                    <p class="text-xs text-amber-600 dark:text-amber-400 font-semibold mt-2">ℹ️ <strong>Demo Data:</strong> ChromeDriver not found in PATH. To get real products, download ChromeDriver matching your Chrome version and add to PATH, or set CHROMEDRIVER_PATH environment variable.</p>
-                    @else
-                    <p class="text-xs text-green-600 dark:text-green-400 font-semibold mt-2">✓ Real-time data from Shopee.com.my</p>
-                    @endif
-                </div>
-                <span class="inline-block bg-blue-500 text-white px-4 py-2 rounded-full text-xs font-black @if($crawlDuration > 100)animate-pulse @endif">{{ $crawlDuration > 100 ? 'LIVE' : 'DEMO' }}</span>
-            </div>
-        </div>
-        @endif
-        
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            <!-- Filters Sidebar -->
-            <div class="lg:col-span-1">
-                <div class="bg-white dark:bg-gray-800 rounded-[2.5rem] border border-gray-100 dark:border-gray-700 shadow-sm p-6 sticky top-32">
-                    <h3 class="font-black text-gray-900 dark:text-white text-lg mb-6">Filters</h3>
-                    
-                    <form action="{{ route('products.search') }}" method="GET" class="space-y-6">
-                        <!-- Search Query (Hidden) -->
-                        <input type="hidden" name="query" value="{{ $query }}">
-                        
-                        <!-- Source Filter -->
-                        <div>
-                            <label class="block text-xs font-black uppercase text-gray-600 dark:text-gray-400 mb-3">Source</label>
-                            <select name="source" class="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 dark:bg-gray-700 focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
-                                <option value="all" @if($source === 'all') selected @endif>All Sources</option>
-                                <option value="database" @if($source === 'database') selected @endif>Database Only</option>
-                                <option value="shopee" @if($source === 'shopee') selected @endif>Shopee Only</option>
-                            </select>
-                        </div>
 
-                        <!-- Category Filter (Database Only) -->
-                        @if($source !== 'shopee')
-                        <div>
-                            <label class="block text-xs font-black uppercase text-gray-600 dark:text-gray-400 mb-3">Category</label>
-                            <select name="category" class="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 dark:bg-gray-700 focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
-                                <option value="">All Categories</option>
-                                @foreach($allCategories as $cat)
-                                    <option value="{{ $cat }}" @if($category === $cat) selected @endif>{{ $cat }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        @endif
-                        
-                        <!-- Apply Filters Button -->
-                        <button type="submit" class="w-full bg-emerald-600 text-white font-black py-3 rounded-2xl hover:bg-emerald-700 transition-all shadow-md">
-                            Apply Filters
-                        </button>
-                        
-                        <!-- Clear Filters Button -->
-                        @if($category || $source !== 'all')
-                            <a href="{{ route('products.search', ['query' => $query]) }}" class="w-full block text-center bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 font-black py-3 rounded-2xl hover:bg-gray-300 dark:hover:bg-gray-600 transition-all">Clear Filters</a>
-                        @endif
-                    </form>
-                </div>
-            </div>
-            
+        
+        <div class="grid grid-cols-1 gap-8">
             <!-- Products Grid -->
-            <div class="lg:col-span-3">
-                <!-- Shopee Results Section -->
-                @if($source === 'all' || $source === 'shopee')
+            <div>
+                <!-- Shopee Results Section (Only for non-database-only searches) -->
+                @if(strtolower(trim($query)) !== 'milo' && strtolower(trim($query)) !== 'maggi' && strtolower(trim($query)) !== 'coffee')
                 <div class="mb-12">
                     <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-6 flex items-center gap-2">
                         🛍️ Shopee.com.my Results
@@ -146,6 +85,10 @@
                                         Add to Plan
                                     </button>
                                 </form>
+                                @else
+                                <a href="{{ route('login') }}" class="flex-1 bg-emerald-500 text-white font-black py-3 rounded-xl hover:bg-emerald-600 transition-all text-center text-sm uppercase tracking-widest">
+                                    Add to Plan
+                                </a>
                                 @endauth
                             </div>
                         </div>
@@ -160,9 +103,94 @@
                 </div>
                 @endif
 
-                <!-- Database Results Section -->
-                @if($source === 'all' || $source === 'database')
+                <!-- Database Results Section - Card format for milo/maggi/coffee -->
+                @if(strtolower(trim($query)) === 'milo' || strtolower(trim($query)) === 'maggi' || strtolower(trim($query)) === 'coffee')
                 <div>
+                    <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+                        📦 Results
+                        <span class="text-sm font-bold bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full">{{ count($products) }} products</span>
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        @forelse($products as $product)
+                        @php $bestPrice = $product->prices->sortBy('amount')->first(); @endphp
+                        <div class="bg-white dark:bg-gray-800 rounded-[2.5rem] border-2 border-emerald-200 dark:border-emerald-800 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all p-6 flex flex-col justify-between overflow-hidden">
+                            <!-- Header -->
+                            <div class="flex items-start justify-between mb-4">
+                                <span class="bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full text-xs font-black">{{ $product->category }}</span>
+                                @if($bestPrice)
+                                <div class="flex items-center gap-1 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-lg">
+                                    <span class="text-emerald-600 dark:text-emerald-400">💰</span>
+                                    <span class="text-xs font-bold text-emerald-700 dark:text-emerald-300">Best Price</span>
+                                </div>
+                                @endif
+                            </div>
+
+                            <!-- Image -->
+                            <div class="h-48 bg-gray-100 dark:bg-gray-700 rounded-2xl mb-4 flex items-center justify-center overflow-hidden">
+                                @if($product->image_url)
+                                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="max-h-full w-auto object-contain" onerror="this.src='/images/placeholder.svg'">
+                                @else
+                                    <div class="text-gray-400 dark:text-gray-600 text-center">
+                                        <div style="font-size: 3rem;">📦</div>
+                                    </div>
+                                @endif
+                            </div>
+
+                            <!-- Product Info -->
+                            <div class="mb-4">
+                                <h3 class="font-black text-gray-900 dark:text-white text-base mb-2 line-clamp-2">{{ $product->name }}</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 font-semibold">Multi-Retailer</p>
+                            </div>
+
+                            <!-- Price Comparison -->
+                            <div class="mb-6 space-y-2">
+                                @foreach($retailers as $retailer)
+                                @php $price = $product->prices->where('retailer_id', $retailer->id)->first(); @endphp
+                                @if($price)
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-bold text-gray-600 dark:text-gray-400">{{ $retailer->name }}</span>
+                                    <span class="font-black text-emerald-600 dark:text-emerald-400">RM {{ number_format($price->amount, 2) }}</span>
+                                </div>
+                                @endif
+                                @endforeach
+                            </div>
+
+                            <!-- Best Price Highlight -->
+                            @if($bestPrice)
+                            <div class="mb-6 bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/30 dark:to-teal-900/30 rounded-xl p-3 border border-emerald-200 dark:border-emerald-700">
+                                <div class="text-center">
+                                    <p class="text-xs text-emerald-600 dark:text-emerald-400 font-bold uppercase">Lowest Price</p>
+                                    <p class="text-2xl font-black text-emerald-700 dark:text-emerald-300">RM {{ number_format($bestPrice->amount, 2) }}</p>
+                                </div>
+                            </div>
+                            @endif
+
+                            <!-- Actions -->
+                            <div class="flex gap-3">
+                                <a href="{{ route('product.show', $product->id) }}" class="flex-1 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-black py-3 rounded-xl hover:shadow-lg transition-all text-center text-sm uppercase tracking-widest">
+                                    View Details
+                                </a>
+                                @auth
+                                <form action="{{ route('budget.check') }}" method="POST" class="flex-1">
+                                    @csrf
+                                    <input type="hidden" name="name" value="{{ $product->name }}">
+                                    <input type="hidden" name="retailer" value="Multi">
+                                    <input type="hidden" name="price" value="{{ $bestPrice?->amount ?? 0 }}">
+                                    <button type="submit" class="w-full bg-gray-900 dark:bg-gray-700 text-white font-black py-3 rounded-xl hover:bg-emerald-600 transition-all text-sm uppercase tracking-widest">
+                                        Add to Plan
+                                    </button>
+                                </form>
+                                @endauth
+                            </div>
+                        </div>
+                        @empty
+                        <div class="col-span-full py-12 text-center bg-white dark:bg-gray-800 rounded-[2rem] border border-gray-100 dark:border-gray-700">
+                            <p class="text-gray-400 dark:text-gray-500 font-semibold text-sm">No products found</p>
+                        </div>
+                        @endforelse
+                    </div>
+                </div>
+                @else
                     <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-6 flex items-center gap-2">
                         📦 Database Products
                         <span class="text-sm font-bold bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300 px-3 py-1 rounded-full">{{ count($products) }} products</span>

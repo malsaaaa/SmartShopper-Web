@@ -3,6 +3,7 @@
 @section('content')
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 md:p-12">
+
         <!-- Header -->
         <div class="mb-12 text-center">
             <div class="w-20 h-20 bg-emerald-500 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 shadow-lg shadow-emerald-100">
@@ -16,10 +17,10 @@
         <div class="mb-12">
             <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-4 tracking-tighter">Our Mission</h2>
             <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                SmartShopper is designed to help Malaysian shoppers make informed purchasing decisions by aggregating real-time price data from multiple retailers. We believe that price transparency and smart budgeting are key to financial wellness.
+                SmartShopper is designed to help Malaysian shoppers make informed purchasing decisions by aggregating price data from multiple retailers. We believe that price transparency and smart budgeting are key to financial wellness.
             </p>
             <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Our platform connects you with the best deals across leading Malaysian retailers including Lotus's, Mydin, Shopee, and Lazada, all in one convenient location.
+                Our platform connects you with the best deals across leading Malaysian retailers including Mydin and Shopee, with Lotus's and Lazada coming soon.
             </p>
         </div>
 
@@ -69,8 +70,8 @@
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                         </div>
                         <div>
-                            <h3 class="font-black text-gray-900 dark:text-white mb-2">Real-time Updates</h3>
-                            <p class="text-sm text-gray-700 dark:text-gray-300">Get the latest prices automatically updated from our connected retailers.</p>
+                            <h3 class="font-black text-gray-900 dark:text-white mb-2">Frequent Updates</h3>
+                            <p class="text-sm text-gray-700 dark:text-gray-300">Prices are refreshed regularly throughout the day to ensure you always have the latest market information.</p>
                         </div>
                     </div>
                 </div>
@@ -79,24 +80,38 @@
 
         <!-- Retailers -->
         <div class="mb-12">
-            <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-6 tracking-tighter">Our Retail Partners</h2>
-            <p class="text-gray-700 dark:text-gray-300 mb-6">We work with Malaysia's leading retailers to bring you the most comprehensive price data:</p>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 text-center border border-gray-100 dark:border-gray-600">
-                    <div class="text-3xl font-black text-gray-900 dark:text-white mb-2">🏪</div>
-                    <p class="font-bold text-gray-900 dark:text-white">Lotus's</p>
+            <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-6 tracking-tighter text-center">Our Retail Partners</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6 text-center">We work with Malaysia's leading retailers to bring you the most comprehensive price data:</p>
+            
+            <!-- Active Retailers -->
+            <div class="mb-8">
+                <h3 class="text-sm font-bold text-gray-600 dark:text-gray-400 mb-3 uppercase tracking-widest text-center">Currently Active</h3>
+                <div class="flex justify-center gap-4">
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 text-center border border-gray-100 dark:border-gray-600 w-32">
+                        <div class="text-3xl font-black text-gray-900 dark:text-white mb-2">🏬</div>
+                        <p class="font-bold text-gray-900 dark:text-white">Mydin</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 text-center border border-gray-100 dark:border-gray-600 w-32">
+                        <div class="text-3xl font-black text-gray-900 dark:text-white mb-2">🛒</div>
+                        <p class="font-bold text-gray-900 dark:text-white">Shopee</p>
+                    </div>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 text-center border border-gray-100 dark:border-gray-600">
-                    <div class="text-3xl font-black text-gray-900 dark:text-white mb-2">🏬</div>
-                    <p class="font-bold text-gray-900 dark:text-white">Mydin</p>
-                </div>
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 text-center border border-gray-100 dark:border-gray-600">
-                    <div class="text-3xl font-black text-gray-900 dark:text-white mb-2">🛒</div>
-                    <p class="font-bold text-gray-900 dark:text-white">Shopee</p>
-                </div>
-                <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 text-center border border-gray-100 dark:border-gray-600">
-                    <div class="text-3xl font-black text-gray-900 dark:text-white mb-2">📦</div>
-                    <p class="font-bold text-gray-900 dark:text-white">Lazada</p>
+            </div>
+
+            <!-- Coming Soon -->
+            <div>
+                <h3 class="text-sm font-bold text-gray-600 dark:text-gray-400 mb-3 uppercase tracking-widest text-center">Coming Soon</h3>
+                <div class="flex justify-center gap-4">
+                    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 text-center border border-blue-200 dark:border-blue-800 opacity-60 w-32">
+                        <div class="text-3xl font-black text-gray-900 dark:text-white mb-2">🏪</div>
+                        <p class="font-bold text-gray-900 dark:text-white">Lotus's</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Coming Soon</p>
+                    </div>
+                    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6 text-center border border-blue-200 dark:border-blue-800 opacity-60 w-32">
+                        <div class="text-3xl font-black text-gray-900 dark:text-white mb-2">📦</div>
+                        <p class="font-bold text-gray-900 dark:text-white">Lazada</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Coming Soon</p>
+                    </div>
                 </div>
             </div>
         </div>

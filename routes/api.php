@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ProductSearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,13 @@ use App\Http\Controllers\ChatController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+// Product Search Routes (Public)
+Route::prefix('products')->group(function () {
+    Route::get('/search', [ProductSearchController::class, 'search']);
+    Route::get('/all', [ProductSearchController::class, 'getAll']);
+    Route::get('/category/{category}', [ProductSearchController::class, 'getByCategory']);
 });
 
 // Chat routes (protected by auth - using web auth)

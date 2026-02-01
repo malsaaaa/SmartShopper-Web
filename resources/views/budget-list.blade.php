@@ -1,7 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-gray-50 dark:bg-gray-900 min-h-screen pb-12" x-data="{ openModal: false, showClearConfirm: false, shareModal: false, editNotes: null, sortBy: 'name', filterWishlist: false, printMode: false }">
+    <div class="bg-gray-50 dark:bg-gray-900 min-h-screen pb-12 relative overflow-hidden" x-data="{ openModal: false, showClearConfirm: false, shareModal: false, editNotes: null, sortBy: 'name', filterWishlist: false, printMode: false }">
+        
+        <!-- Background Image Overlay -->
+        <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+            <img src="{{ asset('images/2.jpg') }}" alt="background" class="w-full h-full object-cover opacity-10 dark:opacity-5">
+        </div>
+
+        <!-- Content wrapper for proper z-index layering -->
+        <div class="relative z-10">
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex justify-between items-center flex-wrap gap-4">
             <h1 class="text-3xl font-black text-gray-900 dark:text-white tracking-tighter">Budget Planning</h1>
@@ -131,16 +139,6 @@
                 <div class="bg-gray-900 px-10 py-6 flex justify-between items-center flex-wrap gap-4 no-print">
                     <span class="text-white text-[10px] font-black uppercase tracking-widest">Active Shopping List</span>
                     <div class="flex gap-2 flex-wrap">
-                        <select x-model="sortBy" class="px-3 py-2 bg-gray-800 text-white rounded-lg text-xs font-black border-0 focus:ring-2 focus:ring-emerald-500">
-                            <option value="name">Sort by Name</option>
-                            <option value="price">Sort by Price</option>
-                            <option value="retailer">Sort by Retailer</option>
-                            <option value="quantity">Sort by Quantity</option>
-                        </select>
-                        <button @click="filterWishlist = !filterWishlist" class="px-3 py-2 text-xs font-black uppercase bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors">
-                            <span x-show="!filterWishlist">⭐ Show Wishlist</span>
-                            <span x-show="filterWishlist">❌ Hide Wishlist</span>
-                        </button>
                         <button @click="showClearConfirm = true" class="text-[10px] font-black text-emerald-400 uppercase hover:text-red-400 transition-colors">
                             Clear List
                         </button>
@@ -153,10 +151,10 @@
                             <div class="flex items-center gap-6 flex-1 w-full">
                                 <!-- Product Image -->
                                 @if($item->image_url)
-                                    <img src="{{ $item->image_url }}" alt="{{ $item->name }}" class="w-12 h-12 rounded-2xl object-cover shadow-sm flex-shrink-0">
+                                    <img src="{{ $item->image_url }}" alt="{{ $item->name }}" class="w-20 h-20 rounded-2xl object-cover shadow-md flex-shrink-0 hover:shadow-lg transition-shadow" onerror="this.src='{{ asset('images/placeholder.svg') }}'">
                                 @else
-                                    <div style="width:52px; height:52px;" class="bg-white rounded-2xl flex items-center justify-center text-emerald-500 shadow-sm flex-shrink-0">
-                                        <svg style="width:26px; height:26px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                                    <div style="width:80px; height:80px;" class="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl flex items-center justify-center text-emerald-500 shadow-md flex-shrink-0 hover:shadow-lg transition-shadow">
+                                        <svg style="width:40px; height:40px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                                     </div>
                                 @endif
 
@@ -188,14 +186,9 @@
                                     </form>
                                 </div>
 
-                                <!-- Wishlist Toggle -->
-                                <form action="{{ route('budget.wishlist', $item->id) }}" method="POST" class="inline">@csrf
-                                    <button type="submit" class="p-2 text-gray-300 hover:text-purple-500 transition-colors" title="Add to wishlist">
-                                        <svg style="width:16px; height:16px;" fill="{{ $item->is_wishlist ? 'currentColor' : 'none' }}" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                                    </button>
-                                </form>
+                                <!-- Wishlist Toggle - REMOVED -->
 
-                                <form action="{{ route('budget.remove', $item->id) }}" method="POST" class="ml-2 border-l pl-2 border-gray-100">@csrf
+                                <form action="{{ route('budget.remove', $item->id) }}" method="POST" class="border-l pl-2 border-gray-100">@csrf
                                     <button class="p-2 text-red-300 hover:text-red-500 transition-colors"><svg style="width:16px; height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
                                 </form>
                             </div>
@@ -301,18 +294,78 @@
                                     <th class="px-4 py-3 text-right">Qty</th>
                                     <th class="px-4 py-3 text-right">Price</th>
                                     <th class="px-4 py-3 text-right">Subtotal</th>
+                                    <th class="px-4 py-3">Cheaper Alternative</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-100">
                                 @foreach($retailerComparison[0]['items'] as $item)
+                                @php
+                                    // Find cheapest price across all retailers for this item
+                                    $cheapestRetailer = null;
+                                    $cheapestPrice = $item['price'];
+                                    $savings = 0;
+                                    
+                                    foreach($retailerComparison as $comparison) {
+                                        foreach($comparison['items'] as $compItem) {
+                                            if ($compItem['name'] === $item['name'] && $compItem['price'] < $cheapestPrice) {
+                                                $cheapestPrice = $compItem['price'];
+                                                $cheapestRetailer = $comparison['retailer_name'];
+                                                $savings = ($item['price'] - $cheapestPrice) * $item['quantity'];
+                                            }
+                                        }
+                                    }
+                                @endphp
                                 <tr class="hover:bg-gray-50 transition-colors">
                                     <td class="px-4 py-3 font-semibold text-gray-900">{{ $item['name'] }}</td>
                                     <td class="px-4 py-3 text-right font-bold text-gray-600">{{ $item['quantity'] }}</td>
                                     <td class="px-4 py-3 text-right font-bold text-emerald-600">RM {{ number_format($item['price'], 2) }}</td>
                                     <td class="px-4 py-3 text-right font-black text-gray-900">RM {{ number_format($item['subtotal'], 2) }}</td>
+                                    <td class="px-4 py-3">
+                                        @if($cheapestRetailer && $savings > 0)
+                                            <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs font-bold">
+                                                💰 Save RM {{ number_format($savings, 2) }} at {{ $cheapestRetailer }}
+                                            </span>
+                                        @else
+                                            <span class="text-gray-400 text-xs">Best price ✓</span>
+                                        @endif
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
+                            <tfoot class="bg-gray-100 border-t-2 border-gray-300">
+                                <tr>
+                                    <td colspan="3" class="px-4 py-4 text-right font-black text-gray-900 uppercase tracking-widest">Total:</td>
+                                    <td class="px-4 py-4 text-right font-black text-lg text-emerald-600">RM {{ number_format(array_sum(array_column($retailerComparison[0]['items'], 'subtotal')), 2) }}</td>
+                                    <td class="px-4 py-4"></td>
+                                </tr>
+                                @php
+                                    // Calculate total if buying from cheapest alternative for each item
+                                    $alternativeTotal = 0;
+                                    $totalSavings = 0;
+                                    
+                                    foreach($retailerComparison[0]['items'] as $item) {
+                                        $cheapestPrice = $item['price'];
+                                        
+                                        foreach($retailerComparison as $comparison) {
+                                            foreach($comparison['items'] as $compItem) {
+                                                if ($compItem['name'] === $item['name'] && $compItem['price'] < $cheapestPrice) {
+                                                    $cheapestPrice = $compItem['price'];
+                                                }
+                                            }
+                                        }
+                                        
+                                        $alternativeTotal += $cheapestPrice * $item['quantity'];
+                                        $totalSavings += ($item['price'] - $cheapestPrice) * $item['quantity'];
+                                    }
+                                @endphp
+                                @if($totalSavings > 0)
+                                <tr class="bg-orange-50 border-t border-orange-200">
+                                    <td colspan="3" class="px-4 py-4 text-right font-black text-orange-900 uppercase tracking-widest">💰 Alternative Total (Best Prices):</td>
+                                    <td class="px-4 py-4 text-right font-black text-lg text-orange-600">RM {{ number_format($alternativeTotal, 2) }}</td>
+                                    <td class="px-4 py-4 text-right font-black text-orange-600 text-sm">Save: RM {{ number_format($totalSavings, 2) }}</td>
+                                </tr>
+                                @endif
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -433,5 +486,7 @@
             </div>
         </div>
 
+        </div>
+        <!-- End content wrapper -->
     </div>
 @endsection

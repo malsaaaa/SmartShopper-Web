@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\PriceReportController;
+use App\Http\Controllers\TelegramBotController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -91,6 +93,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
+    // Connect Telegram Account
+    Route::post('/profile/connect-telegram', [ProfileController::class, 'connectTelegram'])->name('profile.connect-telegram');
+    
     // User profile view
     Route::get('/my-profile', [BudgetController::class, 'showProfile'])->name('profile');
 });
@@ -133,6 +138,14 @@ Route::middleware(['auth', 'verified', 'is_admin'])->prefix('admin')->name('admi
     Route::patch('/scraper/settings', [\App\Http\Controllers\AdminDashboardController::class, 'updateScraperSettings'])->name('scraper.settings.update');
     Route::post('/scraper/logs/clear', [\App\Http\Controllers\AdminDashboardController::class, 'clearScraperLogs'])->name('scraper.logs.clear');
 });
+
+// 6. Telegram Bot Routes (Public - No authentication required)
+Route::post('/telegram/webhook', [TelegramBotController::class, 'handleWebhook'])->name('telegram.webhook');
+Route::get('/telegram/set-webhook', [TelegramBotController::class, 'setWebhook'])->name('telegram.set-webhook');
+Route::get('/telegram/bot-info', [TelegramBotController::class, 'getBotInfo'])->name('telegram.bot-info');
+
+// 7. Telegram Authentication Route
+Route::get('/auth/telegram', [AuthController::class, 'telegramLogin'])->name('auth.telegram');
 
 // 5. Include Authentication Routes (Login, Register, Logout)
 require __DIR__.'/auth.php';

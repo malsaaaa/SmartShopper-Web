@@ -49,51 +49,7 @@ class RetailerProductSeeder extends Seeder
         }
 
         // Products and prices (amounts are in RM)
-        $products = [
-            [
-                'name' => 'Beras Faiza Emas 10KG',
-                'category' => 'Grocery',
-                'image_url' => '/images/products/beras-faiza-10kg.svg',
-                'prices' => [
-                    'Mydin' => 36.20,
-                    'Shopee' => 39.00,
-                ],
-            ],
-            [
-                'name' => 'Saji Cooking Oil 1KG',
-                'category' => 'Grocery',
-                'image_url' => '/images/products/saji-cooking-oil-1kg.svg',
-                'prices' => [
-                    'Mydin' => 6.80,
-                    'Shopee' => 6.50,
-                ],
-            ],
-            [
-                'name' => 'Milo 1KG',
-                'category' => 'Grocery',
-                'image_url' => '/images/products/milo-1kg.svg',
-                'prices' => [
-                    'Mydin' => 24.50,
-                    'Shopee' => 27.00,
-                ],
-            ],
-            [
-                'name' => 'Samsung Galaxy Note 4',
-                'category' => 'Electronics',
-                'image_url' => '/images/products/samsung-galaxy-note-4.svg',
-                'prices' => [
-                    'Shopee' => 650.00,
-                ],
-            ],
-            [
-                'name' => 'HP Victus 15',
-                'category' => 'Electronics',
-                'image_url' => '/images/products/hp-victus-15.svg',
-                'prices' => [
-                    'Shopee' => 4399.00,
-                ],
-            ],
-        ];
+        $products = [];
 
         foreach ($products as $p) {
             $product = Product::firstOrCreate(

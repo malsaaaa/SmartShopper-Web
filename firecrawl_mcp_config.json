@@ -1,0 +1,103 @@
+{
+  "name": "firecrawl-mcp",
+  "version": "1.0.0",
+  "description": "Firecrawl MCP Server for web scraping and crawling integration",
+  "type": "module",
+  "main": "firecrawl_mcp_server.py",
+  "scripts": {
+    "start": "python firecrawl_mcp_server.py",
+    "dev": "python firecrawl_mcp_server.py --debug"
+  },
+  "tools": [
+    {
+      "name": "crawl",
+      "description": "Crawl a URL and extract content",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The URL to crawl"
+          },
+          "depth": {
+            "type": "integer",
+            "description": "Crawl depth (1-5)",
+            "default": 1
+          },
+          "include_markdown": {
+            "type": "boolean",
+            "description": "Include markdown formatted content",
+            "default": true
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Timeout in seconds",
+            "default": 30
+          }
+        },
+        "required": ["url"]
+      }
+    },
+    {
+      "name": "scrape",
+      "description": "Scrape a URL for structured data",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The URL to scrape"
+          },
+          "schema": {
+            "type": "object",
+            "description": "JSON schema for extracting data"
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Timeout in seconds",
+            "default": 30
+          }
+        },
+        "required": ["url"]
+      }
+    },
+    {
+      "name": "extract",
+      "description": "Extract specific content from a URL",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The URL to extract from"
+          },
+          "selectors": {
+            "type": "array",
+            "description": "CSS selectors to extract",
+            "items": {
+              "type": "string"
+            }
+          },
+          "timeout": {
+            "type": "integer",
+            "description": "Timeout in seconds",
+            "default": 30
+          }
+        },
+        "required": ["url"]
+      }
+    }
+  ],
+  "resources": [
+    {
+      "name": "crawl_result",
+      "description": "Result of a crawl operation",
+      "mimeType": "application/json"
+    },
+    {
+      "name": "scrape_result",
+      "description": "Result of a scrape operation",
+      "mimeType": "application/json"
+    }
+  ]
+}

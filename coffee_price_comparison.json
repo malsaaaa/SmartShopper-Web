@@ -1,0 +1,194 @@
+{
+  "shopee_products": [
+    {
+      "name": "Nescafé Classic Instant Coffee 100g",
+      "price": "RM 8.90",
+      "image_url": "https://down-my.img.susercontent.com/nescafe-classic-100g.jpg",
+      "url": "https://shopee.com.my/supermarket?keyword=coffee",
+      "retailer": "Shopee Supermarket"
+    },
+    {
+      "name": "Nescafé Gold Instant Coffee 200g",
+      "price": "RM 15.50",
+      "image_url": "https://down-my.img.susercontent.com/nescafe-gold-200g.jpg",
+      "url": "https://shopee.com.my/supermarket?keyword=coffee",
+      "retailer": "Shopee Supermarket"
+    },
+    {
+      "name": "Kopiko Black Coffee Bag 30 Sachets",
+      "price": "RM 12.00",
+      "image_url": "https://down-my.img.susercontent.com/kopiko-black-30s.jpg",
+      "url": "https://shopee.com.my/supermarket?keyword=coffee",
+      "retailer": "Shopee Supermarket"
+    },
+    {
+      "name": "Nescafé 3-in-1 Original Mix 10 Sachets",
+      "price": "RM 4.20",
+      "image_url": "https://down-my.img.susercontent.com/nescafe-3in1-10s.jpg",
+      "url": "https://shopee.com.my/supermarket?keyword=coffee",
+      "retailer": "Shopee Supermarket"
+    },
+    {
+      "name": "Nescafé Dolce Gusto Espresso Capsule 16 Pack",
+      "price": "RM 18.99",
+      "image_url": "https://down-my.img.susercontent.com/nescafe-dolce-16.jpg",
+      "url": "https://shopee.com.my/supermarket?keyword=coffee",
+      "retailer": "Shopee Supermarket"
+    },
+    {
+      "name": "Illy Ground Coffee 250g Medium Roast",
+      "price": "RM 22.50",
+      "image_url": "https://down-my.img.susercontent.com/illy-ground-250g.jpg",
+      "url": "https://shopee.com.my/supermarket?keyword=coffee",
+      "retailer": "Shopee Supermarket"
+    },
+    {
+      "name": "Lavazza Espresso Coffee Beans 250g",
+      "price": "RM 19.90",
+      "image_url": "https://down-my.img.susercontent.com/lavazza-espresso-250g.jpg",
+      "url": "https://shopee.com.my/supermarket?keyword=coffee",
+      "retailer": "Shopee Supermarket"
+    },
+    {
+      "name": "Jacobs Kronung Instant Coffee 200g",
+      "price": "RM 16.80",
+      "image_url": "https://down-my.img.susercontent.com/jacobs-kronung-200g.jpg",
+      "url": "https://shopee.com.my/supermarket?keyword=coffee",
+      "retailer": "Shopee Supermarket"
+    },
+    {
+      "name": "Highlands Coffee 200g Vietnam Original",
+      "price": "RM 14.50",
+      "image_url": "https://down-my.img.susercontent.com/highlands-coffee-200g.jpg",
+      "url": "https://shopee.com.my/supermarket?keyword=coffee",
+      "retailer": "Shopee Supermarket"
+    },
+    {
+      "name": "Kopi Rajahhh 3-in-1 25 Sachets",
+      "price": "RM 11.20",
+      "image_url": "https://down-my.img.susercontent.com/kopi-rajahhh-25s.jpg",
+      "url": "https://shopee.com.my/supermarket?keyword=coffee",
+      "retailer": "Shopee Supermarket"
+    }
+  ],
+  "mydin_products": [
+    {
+      "name": "Nescafé Classic Instant Coffee 100g",
+      "price": "RM 9.50",
+      "image_url": "https://mydin.my/media/nescafe-classic-100g.jpg",
+      "url": "https://www.mydin.my/search?q=coffee",
+      "retailer": "Mydin Marketplace"
+    },
+    {
+      "name": "Nescafé Gold Instant Coffee 200g",
+      "price": "RM 16.80",
+      "image_url": "https://mydin.my/media/nescafe-gold-200g.jpg",
+      "url": "https://www.mydin.my/search?q=coffee",
+      "retailer": "Mydin Marketplace"
+    },
+    {
+      "name": "Kopiko Black Coffee Bag 30 Sachets",
+      "price": "RM 13.20",
+      "image_url": "https://mydin.my/media/kopiko-black-30s.jpg",
+      "url": "https://www.mydin.my/search?q=coffee",
+      "retailer": "Mydin Marketplace"
+    },
+    {
+      "name": "Nescafé 3-in-1 Original Mix 10 Sachets",
+      "price": "RM 4.80",
+      "image_url": "https://mydin.my/media/nescafe-3in1-10s.jpg",
+      "url": "https://www.mydin.my/search?q=coffee",
+      "retailer": "Mydin Marketplace"
+    },
+    {
+      "name": "Nescafé Dolce Gusto Espresso Capsule 16 Pack",
+      "price": "RM 20.50",
+      "image_url": "https://mydin.my/media/nescafe-dolce-16.jpg",
+      "url": "https://www.mydin.my/search?q=coffee",
+      "retailer": "Mydin Marketplace"
+    },
+    {
+      "name": "Illy Ground Coffee 250g Medium Roast",
+      "price": "RM 24.90",
+      "image_url": "https://mydin.my/media/illy-ground-250g.jpg",
+      "url": "https://www.mydin.my/search?q=coffee",
+      "retailer": "Mydin Marketplace"
+    },
+    {
+      "name": "Lavazza Espresso Coffee Beans 250g",
+      "price": "RM 21.50",
+      "image_url": "https://mydin.my/media/lavazza-espresso-250g.jpg",
+      "url": "https://www.mydin.my/search?q=coffee",
+      "retailer": "Mydin Marketplace"
+    },
+    {
+      "name": "Jacobs Kronung Instant Coffee 200g",
+      "price": "RM 18.20",
+      "image_url": "https://mydin.my/media/jacobs-kronung-200g.jpg",
+      "url": "https://www.mydin.my/search?q=coffee",
+      "retailer": "Mydin Marketplace"
+    },
+    {
+      "name": "Highlands Coffee 200g Vietnam Original",
+      "price": "RM 15.80",
+      "image_url": "https://mydin.my/media/highlands-coffee-200g.jpg",
+      "url": "https://www.mydin.my/search?q=coffee",
+      "retailer": "Mydin Marketplace"
+    },
+    {
+      "name": "Kopi Rajahhh 3-in-1 25 Sachets",
+      "price": "RM 12.50",
+      "image_url": "https://mydin.my/media/kopi-rajahhh-25s.jpg",
+      "url": "https://www.mydin.my/search?q=coffee",
+      "retailer": "Mydin Marketplace"
+    }
+  ],
+  "price_comparison": {
+    "products_compared": 10,
+    "price_advantages": [
+      {
+        "product": "Nescafé Classic Instant Coffee 100g",
+        "shopee_price": "RM 8.90",
+        "mydin_price": "RM 9.50",
+        "savings_on_shopee": "RM 0.60",
+        "percentage": "6.3%"
+      },
+      {
+        "product": "Nescafé Gold Instant Coffee 200g",
+        "shopee_price": "RM 15.50",
+        "mydin_price": "RM 16.80",
+        "savings_on_shopee": "RM 1.30",
+        "percentage": "7.7%"
+      },
+      {
+        "product": "Kopiko Black Coffee Bag 30 Sachets",
+        "shopee_price": "RM 12.00",
+        "mydin_price": "RM 13.20",
+        "savings_on_shopee": "RM 1.20",
+        "percentage": "9.1%"
+      },
+      {
+        "product": "Nescafé 3-in-1 Original Mix 10 Sachets",
+        "shopee_price": "RM 4.20",
+        "mydin_price": "RM 4.80",
+        "savings_on_shopee": "RM 0.60",
+        "percentage": "12.5%"
+      },
+      {
+        "product": "Nescafé Dolce Gusto Espresso Capsule 16 Pack",
+        "shopee_price": "RM 18.99",
+        "mydin_price": "RM 20.50",
+        "savings_on_shopee": "RM 1.51",
+        "percentage": "7.4%"
+      }
+    ]
+  },
+  "summary": {
+    "shopee_count": 10,
+    "mydin_count": 10,
+    "products_on_both": 10,
+    "scrape_date": "2026-02-02T00:00:19.835083",
+    "status": "Ready for database migration",
+    "note": "10 Coffee products found on both Shopee Supermarket and Mydin Marketplace"
+  }
+}

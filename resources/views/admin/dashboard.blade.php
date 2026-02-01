@@ -292,6 +292,10 @@
 
 <script>
 document.getElementById('runScraperBtn').addEventListener('click', async function() {
+    if (!confirm('Are you sure you want to run the scraper? This may take a few minutes.')) {
+        return;
+    }
+    
     const btn = this;
     const originalHtml = btn.innerHTML;
     

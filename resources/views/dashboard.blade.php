@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-gradient-to-br from-gray-50 via-blue-50 to-emerald-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 min-h-screen pb-12">
+<div class="bg-gradient-to-br from-gray-50 via-blue-50 to-emerald-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 min-h-screen pb-12 relative overflow-hidden">
+        <!-- Background Overlay Image -->
+        <div class="absolute inset-0 opacity-50 dark:opacity-10" style="background-image: url('/images/background-mall.jpg'); background-size: cover; background-position: center; filter: blur(3px);"></div>
+
         <!-- Header Section with Gradient -->
-        <div class="bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-600 dark:from-emerald-600 dark:via-teal-600 dark:to-blue-700 border-b-4 border-emerald-600 shadow-lg">
+        <div class="bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-600 dark:from-emerald-600 dark:via-teal-600 dark:to-blue-700 border-b-4 border-emerald-600 shadow-lg relative z-10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div class="flex flex-col md:flex-row justify-between items-end gap-6">
                     <div>
@@ -46,7 +49,7 @@
             </div>
         </div>
 
-        <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
                 
                 <div class="lg:col-span-12 space-y-8">

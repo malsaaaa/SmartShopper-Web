@@ -53,62 +53,77 @@
                         <h1 class="text-4xl font-black text-gray-900 tracking-tighter mt-2 leading-none">{{ $product->name }}</h1>
                     </div>
 
-                    <h3 class="text-xs font-black text-gray-400 uppercase tracking-widest mb-6">Compare Store Prices</h3>
+                    <!-- Report Price Button -->
+                    <div class="mb-8">
+                        <button type="button" onclick="document.getElementById('reportModal').classList.remove('hidden')" class="inline-flex items-center gap-2 text-[10px] font-black text-red-600 uppercase tracking-widest hover:text-red-700 transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4v2m0-12H9m6 0h-3m6 0H9m6 0h3m-6 0v2m0-4v-2m0 12v2m0-4v-2"/></svg>
+                            Report Incorrect Price
+                        </button>
+                    </div>
                     
-                    <div class="space-y-4">
-                        @foreach($product->prices->sortBy('amount') as $price)
-                        <div class="flex items-center justify-between p-6 bg-gray-50 rounded-3xl border border-transparent hover:border-emerald-100 hover:bg-white transition-all group relative">
-                            @if($loop->first)
-                                <span class="absolute -top-2 -right-2 bg-yellow-400 text-gray-900 text-[9px] font-black px-3 py-1 rounded-full shadow-sm uppercase tracking-widest z-10">Best Value</span>
-                            @endif
-                            <div>
-                                <div class="flex flex-col items-start">
-                                    <img src="{{ $price->retailer->logo_url ?? '/images/retailers/default.svg' }}" class="w-8 h-8 object-contain mb-2" alt="{{ $price->retailer->name }}">
-                                    <p class="text-[10px] font-black text-gray-400 uppercase mb-1">{{ $price->retailer->name ?? 'Retailer' }}</p>
-                                </div>
-                                <p class="text-2xl font-black text-gray-900">RM {{ number_format($price->amount, 2) }}</p>
-                            </div>
-                            <div x-data="{ showReport: false }" class="flex items-center gap-3">
-                                <button class="p-3 bg-white border border-gray-100 rounded-2xl text-gray-400 hover:text-emerald-500 transition-colors">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
-                                </button>
+                    @php
+                        $pricesByRetailer = $product->prices->groupBy('retailer_id');
+                    @endphp
 
-                                <form action="{{ route('budget.check') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="name" value="{{ $product->name }}">
-                                    <input type="hidden" name="retailer" value="{{ $price->retailer->name }}">
-                                    <input type="hidden" name="price" value="{{ $price->amount }}">
-                                    <button type="submit" class="bg-emerald-500 text-white px-6 py-3.5 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-emerald-600 transition-all shadow-lg active:scale-95">Add to Plan</button>
-                                </form>
-
-                                @php
-                                    // Prefer the per-price product URL when available, otherwise fall back to retailer base URL (search) or Google search
-                                    $storeUrl = $price->product_url
-                                        ?? ($price->retailer->base_url ? rtrim($price->retailer->base_url, '/') . '/search?q=' . urlencode($product->name) : 'https://www.google.com/search?q=' . urlencode($price->retailer->name . ' ' . $product->name));
-                                @endphp
-                                <a href="{{ $storeUrl }}" target="_blank" rel="noopener noreferrer" class="text-xs px-3 py-2 rounded-md border bg-white">Visit Store</a>
-
-                                <!-- Report price UI -->
-                                <div class="relative">
-                                    <button type="button" @click.prevent="showReport = !showReport" class="text-xs font-black border border-gray-100 px-3 py-2 rounded-full bg-white hover:bg-gray-50">Report</button>
-
-                                    <div x-show="showReport" x-cloak class="absolute right-0 mt-2 w-80 bg-white border rounded-xl p-4 shadow-lg z-20">
-                                        <form action="{{ route('product.report', $product->id) }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="retailer_id" value="{{ $price->retailer->id }}">
-                                            <input type="hidden" name="reported_price" value="{{ $price->amount }}">
-                                            <textarea name="comment" class="w-full p-2 border rounded-md text-sm" rows="3" placeholder="Describe the issue (optional)"></textarea>
-                                            <div class="mt-2 flex justify-end gap-2">
-                                                <button type="button" @click="showReport = false" class="text-xs px-3 py-2 rounded-md border">Cancel</button>
-                                                <button type="submit" class="text-xs px-3 py-2 rounded-md bg-emerald-500 text-white font-black">Send</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                    @foreach($pricesByRetailer as $retailerId => $prices)
+                        @php
+                            $retailer = $prices->first()->retailer;
+                            $bgColor = $retailer->name === 'Mydin' 
+                                ? 'bg-blue-600' 
+                                : ($retailer->name === 'Shopee' 
+                                    ? 'bg-orange-600' 
+                                    : 'bg-gray-600');
+                            $boxColor = $retailer->name === 'Mydin' 
+                                ? 'bg-blue-50 border-blue-200 hover:bg-blue-100' 
+                                : ($retailer->name === 'Shopee' 
+                                    ? 'bg-orange-50 border-orange-200 hover:bg-orange-100' 
+                                    : 'bg-gray-50 border-gray-200 hover:bg-gray-100');
+                        @endphp
+                        
+                        <!-- Retailer Header -->
+                        <div class="{{ $bgColor }} rounded-t-3xl px-8 py-4">
+                            <div class="flex items-center gap-3">
+                                <img src="{{ $retailer->logo_url ?? '/images/retailers/default.svg' }}" class="w-10 h-10 object-contain" alt="{{ $retailer->name }}">
+                                <p class="text-lg font-black text-white uppercase tracking-widest">{{ $retailer->name }}</p>
                             </div>
                         </div>
-                        @endforeach
-                    </div>
+
+                        <!-- Prices Grid -->
+                        <div class="bg-gray-50 rounded-b-3xl px-8 py-6 mb-6">
+                            <div class="space-y-4">
+                                @foreach($prices->sortBy('amount') as $price)
+                                    @php
+                                        $isLowest = $price->amount === $product->prices->min('amount');
+                                    @endphp
+                                    <div class="relative">
+                                        @if($isLowest)
+                                            <span class="absolute -top-3 left-4 bg-yellow-400 text-gray-900 text-[9px] font-black px-3 py-1 rounded-full shadow-sm uppercase tracking-widest z-10">BEST</span>
+                                        @endif
+                                        <div class="flex flex-col items-center justify-center p-6 {{ $boxColor }} rounded-2xl border transition-all group hover:shadow-lg">
+                                            <p class="text-4xl font-black text-gray-900 mb-2">RM {{ number_format($price->amount, 2) }}</p>
+                                            <p class="text-[10px] font-bold text-gray-500 mb-4">{{ $price->scraped_at->format('M d, H:i') }}</p>
+                                            
+                                            <div class="flex flex-col gap-2 w-full">
+                                                <form action="{{ route('budget.check') }}" method="POST" class="w-full">
+                                                    @csrf
+                                                    <input type="hidden" name="name" value="{{ $product->name }}">
+                                                    <input type="hidden" name="retailer" value="{{ $price->retailer->name }}">
+                                                    <input type="hidden" name="price" value="{{ $price->amount }}">
+                                                    <button type="submit" class="w-full bg-emerald-500 text-white px-4 py-3 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-emerald-600 transition-all text-center">+ Add</button>
+                                                </form>
+
+                                                @php
+                                                    $storeUrl = $price->product_url
+                                                        ?? ($price->retailer->base_url ? rtrim($price->retailer->base_url, '/') . '/search?q=' . urlencode($product->name) : 'https://www.google.com/search?q=' . urlencode($price->retailer->name . ' ' . $product->name));
+                                                @endphp
+                                                <a href="{{ $storeUrl }}" target="_blank" rel="noopener noreferrer" class="w-full text-emerald-600 px-4 py-3 rounded-xl border border-emerald-200 font-black text-xs uppercase tracking-widest hover:bg-emerald-50 transition-all text-center">View →</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
 
                     <div class="mt-12 pt-10 border-t border-gray-100">
                         <div class="flex justify-between items-end mb-4">
@@ -126,6 +141,58 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Report Price Modal -->
+        <div id="reportModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4v.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <h3 class="text-lg font-black text-gray-900">Report Incorrect Price</h3>
+                </div>
+                
+                <p class="text-sm text-gray-600 mb-6">Help us keep prices accurate by reporting incorrect information.</p>
+                
+                <form action="{{ route('product.report', $product->id) }}" method="POST">
+                    @csrf
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Select Retailer</label>
+                        <select name="retailer_id" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            <option value="">-- Choose Retailer --</option>
+                            @foreach($product->prices->groupBy('retailer_id') as $retailerId => $prices)
+                                @php $retailer = $prices->first()->retailer; @endphp
+                                <option value="{{ $retailerId }}">{{ $retailer->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Issue Type</label>
+                        <select name="issue_type" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            <option value="">-- Select Issue --</option>
+                            <option value="price_wrong">Price is incorrect</option>
+                            <option value="price_outdated">Price is outdated</option>
+                            <option value="product_unavailable">Product unavailable</option>
+                            <option value="other">Other issue</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Description (Optional)</label>
+                        <textarea name="description" rows="3" placeholder="Please tell us more about the issue..." class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"></textarea>
+                    </div>
+
+                    <div class="flex gap-3">
+                        <button type="button" onclick="document.getElementById('reportModal').classList.add('hidden')" class="flex-1 px-4 py-2 text-gray-700 bg-gray-100 rounded-lg font-black text-sm hover:bg-gray-200 transition-colors">
+                            Cancel
+                        </button>
+                        <button type="submit" class="flex-1 px-4 py-2 text-white bg-emerald-600 rounded-lg font-black text-sm hover:bg-emerald-700 transition-colors">
+                            Submit Report
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
 @endsection

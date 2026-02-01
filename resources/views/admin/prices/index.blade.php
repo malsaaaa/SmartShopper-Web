@@ -12,7 +12,7 @@
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <!-- Filter -->
         <div class="bg-white rounded-lg shadow p-6 mb-6">
-            <form method="GET" action="{{ route('admin.prices') }}" class="flex gap-4">
+            <form method="GET" action="{{ route('admin.prices') }}" class="flex flex-wrap gap-4">
                 <select name="product_id" class="px-4 py-2 border border-gray-300 rounded-lg">
                     <option value="">All Products</option>
                     @foreach($products as $id => $name)
@@ -26,6 +26,10 @@
                         <option value="{{ $id }}" {{ request('retailer_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
                     @endforeach
                 </select>
+
+                <input type="number" name="min_price" step="0.01" placeholder="Min Price (RM)" class="px-4 py-2 border border-gray-300 rounded-lg" value="{{ request('min_price', '') }}">
+                
+                <input type="number" name="max_price" step="0.01" placeholder="Max Price (RM)" class="px-4 py-2 border border-gray-300 rounded-lg" value="{{ request('max_price', '') }}">
                 
                 <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium">
                     Filter
