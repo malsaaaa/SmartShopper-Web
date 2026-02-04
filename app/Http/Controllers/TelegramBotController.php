@@ -587,16 +587,23 @@ class TelegramBotController extends Controller
     {
         return "👋 *Welcome to SmartShopper Bot!*\n\n"
             . "I'm your intelligent shopping assistant helping you find the best prices across Malaysian retailers.\n\n"
-            . "🛍️ *Quick Start:*\n"
-            . "• Type any product name (e.g., 'milo', 'maggi', 'coffee')\n"
-            . "• I'll show you prices from all retailers\n"
-            . "• Use buttons to filter, sort, and compare\n\n"
-            . "📝 *Popular Commands:*\n"
-            . "/help - All available commands\n"
-            . "/trending - Top products\n"
-            . "/deals - Latest deals\n"
-            . "/settings - Preferences\n\n"
-            . "💡 Try: milo, maggi, coffee, samsung";
+            . "🛍️ *What you can do:*\n"
+            . "• Search any product (just type the name)\n"
+            . "• Compare prices from Mydin & Shopee\n"
+            . "• Filter by retailer or sort by price\n"
+            . "• Track trending deals\n\n"
+            . "📱 *Getting Started:*\n\n"
+            . "*If you're NEW:*\n"
+            . "1️⃣ Send /login\n"
+            . "2️⃣ Click the login link\n"
+            . "3️⃣ Create account or login\n"
+            . "4️⃣ Start using the bot!\n\n"
+            . "*If you already have an account:*\n"
+            . "1️⃣ Send /connect\n"
+            . "2️⃣ Copy the code from bot\n"
+            . "3️⃣ Go to your profile settings\n"
+            . "4️⃣ Paste code to connect\n\n"
+            . "Type /help for all available commands.";
     }
 
     /**
@@ -605,24 +612,28 @@ class TelegramBotController extends Controller
     private function getHelpMessage(): string
     {
         return "📚 *SmartShopper Bot - Complete Guide*\n\n"
-            . "*🔍 Search:*\n"
-            . "Just type a product name\n\n"
-            . "*📋 Commands:*\n"
-            . "/start - Welcome\n"
-            . "/help - This message\n"
+            . "*� GETTING STARTED:*\n\n"
+            . "*For NEW users:*\n"
+            . "/login - Create account or login\n\n"
+            . "*For existing users:*\n"
+            . "/connect - Link your website account\n\n"
+            . "*🔍 SEARCH & BROWSE:*\n"
+            . "Just type any product name\n"
             . "/trending - Popular products\n"
-            . "/deals - Best deals\n"
+            . "/deals - Best deals\n\n"
+            . "*📋 ACCOUNT & SETTINGS:*\n"
+            . "/list - Your shopping list\n"
             . "/settings - Preferences\n"
-            . "/list - Shopping list\n\n"
-            . "*💡 Features:*\n"
-            . "✅ Real-time prices\n"
+            . "/help - This guide\n\n"
+            . "*💡 FEATURES:*\n"
+            . "✅ Real-time prices from 2 retailers\n"
             . "✅ Filter by retailer\n"
             . "✅ Sort by price\n"
-            . "✅ Pagination\n\n"
-            . "*🏪 Retailers:*\n"
+            . "✅ Track your shopping list\n\n"
+            . "*🏪 RETAILERS:*\n"
             . "🔵 Mydin\n"
             . "🟠 Shopee\n\n"
-            . "Start searching now! 🚀";
+            . "Need to login? Send /login now! 🚀";
     }
 
     /**
@@ -677,6 +688,41 @@ class TelegramBotController extends Controller
             return response()->json($response->json());
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+    /**
+     * Send budget alert notification to user
+     */
+    public function sendBudgetAlert($userId, $budgetLimit, $totalSpent)
+    {
+        try {
+            // Find user by ID
+            $user = \App\Models\User::find($userId);
+            
+            if (!$user || !$user->telegram_chat_id) {
+                return; // User not linked to Telegram
+            }
+
+            $chatId = $user->telegram_chat_id;
+            $overspend = $totalSpent - $budgetLimit;
+            $percentage = round(($totalSpent / $budgetLimit) * 100);
+
+            $text = "⚠️ *Budget Alert!*\n\n";
+            $text .= "Your budget has been exceeded!\n\n";
+            $text .= "📊 *Budget Summary:*\n";
+            $text .= "💰 Budget Limit: RM " . number_format($budgetLimit, 2) . "\n";
+            $text .= "💸 Total Spent: RM " . number_format($totalSpent, 2) . "\n";
+            $text .= "🔴 Over Budget: RM " . number_format($overspend, 2) . "\n";
+            $text .= "📈 Usage: {$percentage}%\n\n";
+            $text .= "Visit your dashboard to manage your budget:\n";
+            $text .= env('APP_URL', 'https://smartshopper.local');
+
+            $this->sendMessage($chatId, $text, 'Markdown');
+
+            \Log::info("Budget alert sent to user {$userId}: Over by RM " . number_format($overspend, 2));
+        } catch (\Exception $e) {
+            \Log::error('Budget alert error: ' . $e->getMessage());
         }
     }
 

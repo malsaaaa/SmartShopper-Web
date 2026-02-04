@@ -320,6 +320,14 @@ class BudgetController extends Controller
         }
 
         $this->syncTotal();
+
+        // Check if budget exceeded and send Telegram notification
+        $budget = $this->getBudget();
+        if ($budget->current_spending > $budget->limit_amount) {
+            $telegramController = new TelegramBotController();
+            $telegramController->sendBudgetAlert(Auth::id(), $budget->limit_amount, $budget->current_spending);
+        }
+
         return back()->with('success', "Item added to plan.");
     }
 
